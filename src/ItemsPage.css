@@ -1,0 +1,30 @@
+*{
+    padding:0;
+    box-sizing: border-box;
+    margin:0;
+}
+
+.main-sec-itemspage{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px
+}
+.filter-sec-itemspage{
+    width:20%;
+    height:auto;
+    background-color:#21325E;
+    align-self:flex-start;
+    margin-left:3%;
+    margin-top:10px;
+    border-radius:4px;
+    box-shadow:5px 5px 8px #476072
+}
+
+.grid-sec-products{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    grid-gap:15px; 
+    margin-right:3%;
+    margin-top:10px
+}
