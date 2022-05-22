@@ -97,7 +97,7 @@ function Login(props){
                                         showAlert("success","Logged in successfully");
                                         setIsLoading(false);
                                         navigation("/");
-                                        window.location.reload(true);
+                                        //window.location.reload(true);
                                         }catch(err){
                                             showAlert("failure","Login failed")
                                             setIsLoading(false);
@@ -107,7 +107,7 @@ function Login(props){
                                     }
                                 }>
                                     <div style={{width:"60%",backgroundColor:"#fb641b",padding:"20px",textAlign:"center",color:"white",cursor:"pointer"}}>{!isLoading?"Login":
-                        <div style={{display:"flex",gap:"20px",justifyContent:"center",alignItems:"center"}}>
+                                    <div style={{display:"flex",gap:"20px",justifyContent:"center",alignItems:"center"}}>
                             <p>Logging in...</p>
                             <SaveSpinner/>
                         </div>

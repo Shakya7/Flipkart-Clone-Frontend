@@ -112,7 +112,7 @@ function SignUp(props){
                                         await dispatch({type:"connect-to-db"});
                                         setIsLoading(false);
                                         navigation("/");
-                                        window.location.reload(true);
+                                        //window.location.reload(true);
                                         }catch(err){
                                             setIsLoading(false);
                                             setFailure(true)
