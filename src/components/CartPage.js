@@ -22,11 +22,11 @@ const CartPage=(props)=>{
 			order_id: data.id,
 			handler: async (response) => {
 				try {
-					const verifyUrl = "https://flipkart-clone-mernstack.herokuapp.com/api/v1/payment/verify";
+					const verifyUrl = `${process.env.REACT_APP_BACKEND_URL}/api/v1/payment/verify`;
 					await axios.post(verifyUrl, response,{withCredentials:true})
 					.then(async function (res){
                         setPaymentSt(true);
-                        const user=await axios.patch("https://flipkart-clone-mernstack.herokuapp.com/api/v1/payment/success",{
+                        const user=await axios.patch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/payment/success`,{
                             orders:state.billingProducts,
                             address:state.billingAddress,
                             price:state.finalPrice
@@ -51,7 +51,7 @@ const CartPage=(props)=>{
 
 	const handlePayment = async (val) => {
 		try {
-			const orderUrl = "https://flipkart-clone-mernstack.herokuapp.com/api/v1/payment/orders";
+			const orderUrl = `${process.env.REACT_APP_BACKEND_URL}/api/v1/payment/orders`;
 			const { data } = await axios.post(orderUrl, { amount: Number(val) },{withCredentials:true});
 			initPayment(data.data);
 		} catch (error) {

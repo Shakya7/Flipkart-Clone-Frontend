@@ -27,9 +27,10 @@ function SignUp(props){
     },[inputState]);
 
     const navigation=useNavigate();
+
     const signupFunction=async()=>{
         try{
-        const user= await axios.post("https://flipkart-clone-mernstack.herokuapp.com/api/v1/users/signup",{
+        const user= await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/signup`,{
             name:inputState.name,
             email:inputState.email,
             password:inputState.password,

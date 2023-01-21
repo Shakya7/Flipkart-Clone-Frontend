@@ -15,7 +15,7 @@ export function ResetPass(){
     const [showError,setShowError]=useState(false);
     //console.log(token);
     const checkToken=()=>{
-        axios.post("https://flipkart-clone-mernstack.herokuapp.com/api/v1/users/checkResetToken",{
+        axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/checkResetToken`,{
             passwordResetToken:token
         },{withCredentials:true}).then(res=>setShowResultPForm(true)).catch(err=>setShowResultPForm(false));
         console.log(showError);
@@ -42,7 +42,7 @@ export function ResetPass(){
                 <div onClick={async e=>{
                     if(resetPOptions.newPassword===resetPOptions.confirmNewPassword){
                         setShowError(false);
-                        const user=await axios.patch(`https://flipkart-clone-mernstack.herokuapp.com/api/v1/users/resetPassword/${token}`,{
+                        const user=await axios.patch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/resetPassword/${token}`,{
                             password:resetPOptions.newPassword,
                             confirmPassword:resetPOptions.confirmNewPassword
                         },{withCredentials:true});

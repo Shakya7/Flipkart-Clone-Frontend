@@ -120,7 +120,7 @@ export const Navbar=()=>{
                                 <hr/>
                                 <div className="login-dropdown" onClick={async e=>{
                                     dispatch({type:"logout"});
-                                    await axios.get("https://flipkart-clone-mernstack.herokuapp.com/api/v1/users/logout",{
+                                    await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/logout`,{
                                         withCredentials:true
                                     });
                                     navigation("/");

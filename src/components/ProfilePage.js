@@ -30,7 +30,7 @@ const ProfilePage=(props)=>{
     let gender=state.userProfile?state.userProfile.gender:"";
 
     const getProfileDetails=async()=>{
-        const user=await axios.get("https://flipkart-clone-mernstack.herokuapp.com/api/v1/getUserDetails",{
+        const user=await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/getUserDetails`,{
             withCredentials:true
         });
         return user;
@@ -38,7 +38,7 @@ const ProfilePage=(props)=>{
     const checkLoggedIn=async()=>{
         try{
             setIsLoading(true)
-            const user=await axios.get("https://flipkart-clone-mernstack.herokuapp.com/api/v1/users/authenticate",{
+            const user=await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/authenticate`,{
             withCredentials:true
             });
             setIsLoading(false);
@@ -96,7 +96,7 @@ const ProfilePage=(props)=>{
 
     /*const addAddress=async ()=>{
         try{
-            const user= await axios.post("https://flipkart-clone-mernstack.herokuapp.com/api/v1/users/add-address",{
+            const user= await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/add-address`,{
                 address:newAddress
             },{withCredentials:true})
             return user.data.data;
@@ -184,7 +184,7 @@ const ProfilePage=(props)=>{
                         <div onClick={
                             async e=>{
                                 dispatch({type:"logout"});
-                                await axios.get("https://flipkart-clone-mernstack.herokuapp.com/api/v1/users/logout",{
+                                await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/logout`,{
                                     withCredentials:true
                                 });
                                 navigation("/");
@@ -226,7 +226,7 @@ const ProfilePage=(props)=>{
                                 {profileDetails.profile_edit?<div onClick={
                                     async e=>{
                                         setIsLoading(true);
-                                        const user=await axios.patch("https://flipkart-clone-mernstack.herokuapp.com/api/v1/users/update-name",{
+                                        const user=await axios.patch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/update-name`,{
                                             name:profileDetails.profile_val_fname+" "+profileDetails.profile_val_lname,
                                             gender:profileDetails.gender_val
                                             
@@ -298,7 +298,7 @@ const ProfilePage=(props)=>{
                                     async e=>{
                                         try{
                                         setIsLoading(true);
-                                        const user=await axios.patch("https://flipkart-clone-mernstack.herokuapp.com/api/v1/users/update-email",{
+                                        const user=await axios.patch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/update-email`,{
                                             email:profileDetails.profile_val_email
                                         },{ withCredentials:true});
                                         setProfileDetails({
@@ -340,7 +340,7 @@ const ProfilePage=(props)=>{
                                 {profileDetails.mobile_edit?<div onClick={
                                     async e=>{
                                         setIsLoading(true);
-                                        const user=await axios.patch("https://flipkart-clone-mernstack.herokuapp.com/api/v1/users/update-mobile",{
+                                        const user=await axios.patch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/update-mobile`,{
                                             mobile:profileDetails.profile_val_mobile
                                         },{ withCredentials:true});
                                         setProfileDetails({

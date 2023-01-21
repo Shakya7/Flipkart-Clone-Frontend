@@ -11,7 +11,7 @@ export default function CartProducts(){
     const navigation=useNavigate();
 
     const getAddress=async ()=>{
-        const address=await axios.get("https://flipkart-clone-mernstack.herokuapp.com/api/v1/users/getFirstAddress",{withCredentials:true});
+        const address=await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/getFirstAddress`,{withCredentials:true});
         dispatch({type:"address-selected",payload:address.data.data.addresses});
     }
     useLayoutEffect(()=>{

@@ -30,7 +30,7 @@ export function ForgotPassModal(props){
                 <p style={{textAlign:"center"}}>Email has been sent successfully to your email! Do check the link for changing the password.</p>
                 <p>Didn't receive the email? <span onClick={()=>{
                             setIsLoading(true);
-                            axios.post("https://flipkart-clone-mernstack.herokuapp.com/api/v1/users/forgotPassword",{
+                            axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/forgotPassword`,{
                                 email:forgotPOptins.email
                             },{withCredentials:true})
                             .then(res=>{
@@ -66,7 +66,7 @@ export function ForgotPassModal(props){
                         </div>
                         <div onClick={()=>{
                             setIsLoading(true);
-                            axios.post("https://flipkart-clone-mernstack.herokuapp.com/api/v1/users/forgotPassword",{
+                            axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/forgotPassword`,{
                                 email:forgotPOptins.email
                             },{withCredentials:true})
                             .then(res=>{

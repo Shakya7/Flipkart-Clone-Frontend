@@ -16,7 +16,7 @@ function OrdersPage(){
     const navigation=useNavigate();
 
     const loadData=async ()=>{
-        const userData=await axios.get("https://flipkart-clone-mernstack.herokuapp.com/api/v1/users/load-data",{
+        const userData=await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/load-data`,{
                 withCredentials:true
             });
         return userData.data.data.user;
@@ -25,7 +25,7 @@ function OrdersPage(){
     const checkLoggedIn=async()=>{
         try{
             setIsLoading(true)
-            const user=await axios.get("https://flipkart-clone-mernstack.herokuapp.com/api/v1/users/authenticate",{
+            const user=await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/authenticate`,{
             withCredentials:true
             });
             setIsLoading(false);

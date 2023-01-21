@@ -84,7 +84,7 @@ export function ChangePassModal(props){
                         <div onClick={async e=>{
                             try{
                             setIsLoading(true);
-                            await axios.patch("https://flipkart-clone-mernstack.herokuapp.com/api/v1/users/updatePassword",{
+                            await axios.patch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/updatePassword`,{
                                 currentPassword:passwordFields.currPassword,
                                 password:passwordFields.newPassword,
                                 confirmPassword:passwordFields.confirmNewPassword

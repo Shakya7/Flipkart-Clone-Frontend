@@ -11,15 +11,20 @@ import { showAlert } from "./utils/showAlert";
 
 //	https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/login_img_c4a81e.png
 function Login(props){
+    const navigation=useNavigate();
     const {state,dispatch}=useContext(GlobalContext);
+
     const [inputState,setInputState]=useState({
         email:"",
         password:"",
     });
+
     const [forgotPModal,setForgotPModal]=useState(false);
-    const body=document.querySelector("body");
     const [failure,setFailure]=useState(false);
     const [isLoading,setIsLoading]=useState(false);
+
+    const body=document.querySelector("body");
+    
     useLayoutEffect(()=>{
 
     },[failure,isLoading])
@@ -31,10 +36,10 @@ function Login(props){
             body.style.overflow="auto";
         dispatch({type:"show-cart-enable"});
     },[inputState,forgotPModal]);
-    const navigation=useNavigate();
+
     const loginFunction=async()=>{
         try{
-        const user= await axios.post("https://flipkart-clone-mernstack.herokuapp.com/api/v1/users/login",{
+        const user= await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/login`,{
             email:inputState.email,
             password:inputState.password,
         },{withCredentials:true})
@@ -106,12 +111,14 @@ function Login(props){
                                         }
                                     }
                                 }>
-                                    <div style={{width:"60%",backgroundColor:"#fb641b",padding:"20px",textAlign:"center",color:"white",cursor:"pointer"}}>{!isLoading?"Login":
-                                    <div style={{display:"flex",gap:"20px",justifyContent:"center",alignItems:"center"}}>
-                            <p>Logging in...</p>
-                            <SaveSpinner/>
-                        </div>
-                        }</div>
+                                    <div style={{width:"60%",backgroundColor:"#fb641b",padding:"20px",textAlign:"center",color:"white",cursor:"pointer"}}>
+                                        {!isLoading?"Login":
+                                        <div style={{display:"flex",gap:"20px",justifyContent:"center",alignItems:"center"}}>
+                                            <p>Logging in...</p>
+                                            <SaveSpinner/>
+                                         </div>
+                                        }
+                                    </div>
                                 </div>
                                 <p onClick={e=>setForgotPModal(true)} style={{textAlign:"center",cursor:"pointer",color:"#2874f0"}}>Forgot your password?</p>
                             </div>

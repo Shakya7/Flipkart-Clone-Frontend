@@ -162,7 +162,7 @@ const reducerF=(currState, action)=>{
                 cartProducts:[...currState.cartProducts,{...action.payload,quantity: 1}]
             }
         case "add-to-cart-DB":
-            axios.patch("https://flipkart-clone-mernstack.herokuapp.com/api/v1/users/add-to-cart",{cart:[...currState.cartProducts]},{withCredentials:true}).then(
+            axios.patch(`${process.env.REACT_APP_BACKEND_URL}/users/add-to-cart`,{cart:[...currState.cartProducts]},{withCredentials:true}).then(
             (res)=>{}).catch((err)=>{
             
             })
@@ -241,7 +241,7 @@ const reducerF=(currState, action)=>{
             }
 
         case "add-address-to-DB":
-            axios.patch("https://flipkart-clone-mernstack.herokuapp.com/api/v1/users/add-address",
+            axios.patch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/add-address`,
             {addresses:[...currState.addresses]},{withCredentials:true}).then(
             (res)=>{}).catch((err)=>{
 
@@ -270,7 +270,7 @@ const reducerF=(currState, action)=>{
             }
 
         case "add-wishlist-to-DB":
-            axios.patch("https://flipkart-clone-mernstack.herokuapp.com/api/v1/users/add-wishlist",
+            axios.patch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/add-wishlist`,
             {wishlist:[...currState.wishlist]},{withCredentials:true}).then(
             (res)=>{}).catch((err)=>{
     
@@ -403,7 +403,7 @@ export const GlobalProvider=(props)=>{
     const [accountPage,setAccountPage]=useState(location.pathname==="/profile"?"profile-info":location.pathname==="/profile/addresses"?"addresses-info":location.pathname==="/profile/wishlist"?"wishlist-info":location.pathname==="/cart"?"cart-view":"");
 
     const loadFromDB=async e=>{
-        const userData=await axios.get("https://flipkart-clone-mernstack.herokuapp.com/api/v1/users/load-data",{
+        const userData=await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/load-data`,{
             withCredentials:true
         });
         if(!userData.data.data.user){
