@@ -12,11 +12,7 @@ input{
 label{
   font-size:1.2rem
 }
-.category_img{
-  width:15vmin;
-  height:10vmin;
 
-}
 .fashion{
   display:"flex";
   flex-direction:"column";
@@ -59,13 +55,6 @@ label{
   width:100%
 }
 
-.sub-list{
-  background-color:white;
-  padding:10px;
-}
-.sub-list:hover{
-  background-color: rgb(120, 198, 250);
-}
 .log-dropdown{
   width:inherit;
   height: 10vh;
@@ -103,10 +92,6 @@ label{
   outline: none;
   border-color: #2874f0;
   transition: border 0.2s ease-out;
-}
-.pointer{
-  transform: rotate(45deg);
-
 }
 .product-scale{
   transition: transform 0.4s ease-in-out;

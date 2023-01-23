@@ -24,17 +24,17 @@ export const Navbar=()=>{
 
     },[state.cart,hoverLogin,state.userProfile,state.showCart]);
     return(
-        <div>
-            <div style={{backgroundColor:"#2874f0",width:"100%",height:"9vh", display:"flex",justifyContent:"space-around", position:"sticky",top:0,marginTop:0,zIndex:99}}>
+        <div className="w-screen h-screen overflow-x-hidden">
+            <div className="bg-blue-500 w-full h-14 flex justify-around sticky top-0 z-10">
                 <img onClick={(e)=>{
                     dispatch({type:"show-cart-enable"});
                     dispatch({type:"no-cat"});
                     dispatch({type:"initial"});
                     dispatch({type:"no-star"});
                     navigation("/");
-                }} style={{height:"6vmin",alignSelf:"center",position:"relative",left:"7%",cursor:"pointer"}} src={logo}/>
-                <div style={{display:"flex",alignItems:"center",width:"60vmax",height:"6vh",alignSelf:"center",position:"relative",left:"50px"}}>
-                    <input className="srch" onChange={e=>setSearchTerm(e.target.value)} style={{width:"75%",height:"6vh", alignSelf:"center", borderColor:"white", paddingLeft:"20px"}} type="text" placeholder="Search for products..."/>
+                }} className="self-center relative left-10 cursor-pointer" src={logo}/>
+                <div className="flex items-center w-[60vmax] h-[6vh] self-center relative left-[50px]">
+                    <input className="srch w-[75%] h-[6vh] self-center pl-5 outline-none" onChange={e=>setSearchTerm(e.target.value)} type="text" placeholder="Search for products..."/>
                     <div onClick={
                         async e=>{
                             dispatch({type:"search"});
@@ -43,68 +43,71 @@ export const Navbar=()=>{
                             document.querySelector(".srch").value="";
                             navigation("/");
                         }
-                    } style={{width:"5%",height:"6vh",display:"flex",justifyContent:"center",alignItems:"center", backgroundColor:"white",borderColor:"white",cursor:"pointer"}}>
-                        <img style={{width:"25px"}} src={search_icon}/>
+                    } className="w-[5%] h-full flex justify-center items-center bg-white cursor-pointer">
+                        <img className="w-5" src={search_icon}/>
                     </div>
                 </div>
-                <div style={{display:"flex",alignItems:"center"}}>
+                <div className="flex items-center">
                     {
                         !state.userProfile?
-                        <div onMouseOverCapture={()=>setHover("flex")} className="loggedin" style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",color:"#2874f0", fontWeight:"bold",cursor:"pointer",width:"70px",backgroundColor:"white",padding:"5px",textAlign:"center",position:"relative",left:"10px",fontWeight:"normal"}}>
+                        <div onMouseOverCapture={()=>setHover("flex")} className="flex flex-col justify-center items-center font-bold cursor-pointer w-[70px] bg-white text-blue-500 relative left-[10px] px-1.5 py-1 rounded-sm text-center">
                             <p onClick={
                                 e=>navigation("/login")
-                            } style={{cursor:"pointer"}}>LOGIN</p>
-                            <div onMouseOutCapture={()=>setHover("none")} className="pointer" style={{width:"20%",height:"50%",backgroundColor:"white",position:"absolute",bottom:"-3.3vh",display:hoverLogin}}/>
+                            } className="cursor-pointer">LOGIN</p>
+
                             <div onMouseOutCapture={()=>setHover("none")} style={{display:hoverLogin,position:"absolute", width:"40vmin",backgroundColor:"grey",top:"7vh",alignItems:"center",flexDirection:"column",boxShadow:"5px 0 5px -5px grey,0 5px 5px -5px grey, -5px 0 5px -5px grey"}}>
                                 <div className="log-dropdown">
-                                    <p style={{fontSize:"0.9rem",fontWeight:"bold"}}>New Customer?</p>
+                                    <p className="text-sm font-bold">New Customer?</p>
                                     <p onClick={
                                         e=>navigation("/signup")
-                                    } style={{color:"#2874f0"}}>Sign Up</p>
+                                    } className="text-blue-500">Sign Up</p>
                                 </div>
                                 <hr/>
                                 <div className="login-dropdown" onClick={e=>navigation("/login")}>
-                                    <div style={{display:"flex", justifyContent:"flex-start",marginLeft:"10px", alignItems:"center", textAlign:"center",position:"relative",top:"30%"}}>
-                                        <img style={{width:"20px"}} src={profile_logo}/>
-                                        <p style={{marginLeft:"20px"}}>My Profile</p>
+                                    <div className="flex justify-start ml-2.5 items-center text-center relative top-[30%]">
+                                        <img className="w-5" src={profile_logo}/>
+                                        <p className="ml-5">My Profile</p>
                                     </div>
                                 </div>
                                 <hr/>
                                 <div className="login-dropdown" onClick={e=>navigation("/login")}>
-                                    <div style={{display:"flex", marginLeft:"10px",position:"relative",top:"30%"}}>
-                                        <img style={{width:"20px"}} src={orders_logo}/>
-                                        <p style={{marginLeft:"20px"}}>Orders</p>
+                                    <div className="flex ml-2.5 relative top-[30%]">
+                                        <img className="w-5" src={orders_logo}/>
+                                        <p className="ml-5">Orders</p>
                                     </div>
                                 </div>
                                 <hr/>
                                 <div className="login-dropdown" onClick={e=>navigation("/login")}>
-                                    <div style={{display:"flex", marginLeft:"10px",position:"relative",top:"30%"}}>
-                                        <img style={{width:"20px"}} src={wishlist_logo}/>
-                                        <p style={{marginLeft:"20px"}}>Wishlist</p>
+                                    <div className="flex ml-2.5 relative top-[30%]">
+                                        <img className="w-5" src={wishlist_logo}/>
+                                        <p className="ml-5">Wishlist</p>
                                     </div>    
                                 </div>
                             </div>
                         </div>:
-                        <div onMouseOverCapture={()=>setHover("flex")} className="loggedin" style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",color:"#2874f0", fontWeight:"bold",cursor:"pointer",minwidth:"20vmin",maxWidth:"auto",backgroundColor:"white",padding:"5px",textAlign:"center",position:"relative",left:"10px",fontWeight:"normal",borderRadius:"7px"}}>
-                            <p style={{width:"auto", height:"auto",padding:"3px",fontWeight:"bold"}}>{state.userProfile?state.userProfile.name.split(" ")[0].toUpperCase():"LOGIN"}</p>
-                            <div onMouseOutCapture={()=>setHover("none")} className="pointer" style={{width:"20%",height:"50%",backgroundColor:"white",position:"absolute",bottom:"-3.3vh",display:hoverLogin}}/>
+                        <div onMouseOverCapture={()=>setHover("flex")} className="flex flex-col justify-center items-center font-bold cursor-pointer w-[70px] bg-white text-blue-500 relative left-[10px] px-1.5 py-1 rounded-sm text-center">
+                            <p className="w-auto h-auto p-0.5 font-bold">
+                                {state.userProfile?
+                                state.userProfile.name.split(" ")[0].toUpperCase():
+                                "LOGIN"}
+                            </p>
                             <div onMouseOutCapture={()=>setHover("none")} style={{display:hoverLogin,position:"absolute", width:"40vmin",backgroundColor:"grey",top:"7vh",alignItems:"center",flexDirection:"column",boxShadow:"5px 0 5px -5px grey,0 5px 5px -5px grey, -5px 0 5px -5px grey",borderRadius:"4px 4px 4px 4px"}}>
                                 <div className="login-dropdown" onClick={(e)=>{
                                     setAccountPage("profile-info");
                                     navigation("/profile");
                                 }}>
-                                    <div style={{display:"flex", justifyContent:"flex-start",marginLeft:"10px", alignItems:"center", textAlign:"center",position:"relative",top:"30%"}}>
-                                        <img style={{width:"20px"}} src={profile_logo}/>
-                                        <p style={{marginLeft:"20px"}}>My Profile</p>
+                                    <div className="flex justify-start ml-2.5 items-center text-center relative top-[30%]">
+                                        <img className="w-5" src={profile_logo}/>
+                                        <p className="ml-5">My Profile</p>
                                     </div>
                                 </div>
                                 <hr/>
                                 <div className="login-dropdown" onClick={e=>{
                                     navigation("/orders")
                                 }}>
-                                    <div style={{display:"flex", marginLeft:"10px",position:"relative",top:"30%"}}>
-                                        <img style={{width:"20px"}} src={orders_logo}/>
-                                        <p style={{marginLeft:"20px"}}>Orders</p>
+                                    <div className="flex ml-2.5 relative top-[30%]">
+                                        <img className="w-5" src={orders_logo}/>
+                                        <p className="ml-5">Orders</p>
                                     </div>
                                 </div>
                                 <hr/>
@@ -112,9 +115,9 @@ export const Navbar=()=>{
                                     setAccountPage("wishlist-info");
                                     navigation("/profile/wishlist")
                                 }}>
-                                    <div style={{display:"flex", marginLeft:"10px",position:"relative",top:"30%"}}>
-                                        <img style={{width:"20px"}} src={wishlist_logo}/>
-                                        <p style={{marginLeft:"20px"}}>Wishlist {state.wishlist.length?`(${state.wishlist.length})`:""}</p>
+                                    <div className="flex ml-2.5 relative top-[30%]">
+                                        <img className="w-5" src={wishlist_logo}/>
+                                        <p className="ml-5">Wishlist {state.wishlist.length?`(${state.wishlist.length})`:""}</p>
                                     </div>    
                                 </div>
                                 <hr/>
@@ -124,11 +127,10 @@ export const Navbar=()=>{
                                         withCredentials:true
                                     });
                                     navigation("/");
-                                    window.location.reload();
                                 }}>
-                                    <div style={{display:"flex", marginLeft:"10px",position:"relative",top:"30%"}}>
-                                        <img style={{width:"20px"}} src={logout_logo}/>
-                                        <p style={{marginLeft:"20px"}}>Logout</p>
+                                    <div className="flex ml-2.5 relative top-[30%]">
+                                        <img className="w-5" src={logout_logo}/>
+                                        <p className="ml-5">Logout</p>
                                     </div>    
                                 </div>
 
@@ -139,12 +141,12 @@ export const Navbar=()=>{
                         navigation("/cart");
                         if(accountPage==="addresses-info")
                             window.location.reload(true); 
-                    }} style={{color:"white", fontWeight:"bold", marginLeft:"10vw",display:"flex",position:"relative",cursor:"pointer"}}>
-                        {state.cart===0?"":<div style={{backgroundColor:"red",position:"absolute",top:"-5px",width:"20px",height:"20px",borderRadius:"50%",display:"flex",justifyContent:"center",alignItems:"center"}}>{state.cart}</div>}
-                        <img src={cart_logo} style={{width:"30px"}}/>
-                        <div style={{alignSelf:"center"}}>Cart</div>
+                    }} className="text-white font-bold flex relative cursor-pointer ml-[10vw]" >
+                        {state.cart===0?"":<div className="bg-red-500 absolute top-[-5px] w-5 h-5 rounded-full flex justify-center items-center">{state.cart}</div>}
+                        <img src={cart_logo} className="w-[30px]"/>
+                        <div className="self-center">Cart</div>
                     </div>:
-                    <div style={{width:"15vmax",visibility:"hidden"}}/>
+                    <div className="w-[15vmax] invisible"/>
                     }
                 </div>
                 

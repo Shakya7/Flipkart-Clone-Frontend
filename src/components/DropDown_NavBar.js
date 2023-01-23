@@ -9,11 +9,11 @@ function DropDown(props){
         //DO something
     },[props.show])
     return(
-        <div onMouseEnter={(e)=>props.pass("flex")} onMouseLeave={(e)=>props.pass("none")} style={{display:props.show,flexDirection:"column",position:"absolute",left:0, top:"112%",width:"15vmax",zIndex:2,boxShadow:"5px 0 5px -5px grey,0 5px 5px -5px grey, -5px 0 5px -5px grey"}}>  
+        <div onMouseEnter={(e)=>props.pass("flex")} onMouseLeave={(e)=>props.pass("none")} style={{display:props.show}} className={`flex-col absolute left-0 top-[112%] w-[15vmax] z-2`}>  
         {
             props.items.map((el,i)=>{
                 return(
-                    <div key={i} className="sub-list" onClick={e=>{
+                    <div key={i} className="bg-white p-1.5 hover:bg-sky-400" onClick={e=>{
                         if(el==="Women's clothing")
                         {
                             dispatch({type:"wc"});

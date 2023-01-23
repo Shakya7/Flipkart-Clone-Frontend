@@ -17,17 +17,17 @@ const Categories=()=>{
     /*onMouseOverCapture={(e)=>setCat1("flex")} onMouseOutCapture={(e)=>setCat1("none")}*/
 
     return(
-        <div style={{width:"100%",height:"auto",backgroundColor:"white"}}>
-                <div style={{display:"flex", justifyContent:"space-around",margin:"10px"}}>
+        <div className="w-full h-auto bg-white">
+                <div className="flex justify-around p-2">
                     <div className="fashion">
-                        <div onMouseEnter={(e)=>setCat1("flex")} onClick={(e)=>setCat1("none")} style={{display:"flex",flexDirection:"column", justifyContent:"space-between"}}>
+                        <div onMouseEnter={(e)=>setCat1("flex")} onClick={(e)=>setCat1("none")} className="flex flex-col justify-between">
                             <div onClick={(e)=>{
                                 //dispatch({type:"women's clothing"});
                                 //navigation("/");
 
                             }}>
-                                <img className="category_img" src={cat_1}/>
-                                <p style={{textAlign:"center"}}>{categories[0]}</p>
+                                <img className="w-[15vmin] h-[10vmin]" src={cat_1}/>
+                                <p className="text-center">{categories[0]}</p>
                             </div>
                             <DropDown show={cat1} pass={setCat1} items={["Women's clothing","Men's clothing"]}/>
                         </div>    
@@ -38,8 +38,8 @@ const Categories=()=>{
                         dispatch({type:"electronics"});
                         navigation("/");
                     }}>
-                        <img className="category_img" src={cat_2}/>
-                        <p style={{textAlign:"center"}}>{categories[1]}</p>
+                        <img className="w-[15vmin] h-[10vmin]" src={cat_2}/>
+                        <p className="text-center">{categories[1]}</p>
                     </div>
                     <div className="fashion" onClick={(e)=>{
                         dispatch({type:"jewel"});
@@ -47,11 +47,11 @@ const Categories=()=>{
                         dispatch({type:"jewelery"});                      
                         navigation("/");
                     }}>
-                        <img className="category_img" src={cat_3}/>
-                        <p style={{textAlign:"center"}}>{categories[2]}</p>
+                        <img className="w-[15vmin] h-[10vmin]" src={cat_3}/>
+                        <p className="text-center">{categories[2]}</p>
                     </div>
                 </div>
-                <div style={{width:"100%", height:"2vh",backgroundColor:"#CDE8F6"}}/>
+                <div className="w-full h-[2vh] bg-sky-200"/>
             </div>
             
     )
