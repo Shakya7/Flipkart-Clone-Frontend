@@ -69,7 +69,7 @@ const CartPage=(props)=>{
     },[state.showCart,state.isLoggedIn,paymentSt]);
     return(
 		<div>
-			<div style={{backgroundColor:"#EEEEEE", display:"flex", height:"auto", padding:"20px", justifyContent:"space-between"}}>
+			<div className="flex h-auto p-5 justify-between bg-white">
 				<CartProducts/>
 				{state.cart!==0?<CartAmount handleP={handlePayment}/>:""}
 				{

@@ -1,7 +1,7 @@
 const hideAlert=()=>{
     const el=document.querySelector(".alert");
     if(el)
-        el.parentElement.removeChild(el)
+        el.parentElement.removeChild(el);
 }
 
 export const showAlert=(response,message)=>{

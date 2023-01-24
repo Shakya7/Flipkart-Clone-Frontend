@@ -1,5 +1,4 @@
 import './App.css';
-import "./ItemsPage.css";
 import { Navbar } from './components/Navbar';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import ItemsPage from './components/ItemsPage';

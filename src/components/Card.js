@@ -1,4 +1,3 @@
-
 import { Rating } from "@mui/material";
 import { useNavigate} from "react-router-dom";
 
@@ -8,18 +7,17 @@ export const Card=(props)=>{
     const navigation=useNavigate();
     
     return(
-        <div className="product-scale" onClick={()=>{
-            
+        <div className="product-scale w-[20vmax] flex flex-col h-auto bg-white p-5 justify-center items-center rounded-md shadow-lg shadow-gray-500" onClick={()=>{
             navigation(`/${props.element.id}`,{state:props.element})    //passing the selected item to be received as useLocation
-        }} style={{width:"20vmax", display:"flex",flexDirection:"column",height: "auto",backgroundColor:"white", padding:"20px",justifyContent:"center",alignItems:"center",boxShadow:"3px 3px 5px grey",borderRadius:"8px"}}>
+        }}>
             <div>
-                <img style={{width:"16vmax",height:"30vh"}}src={props.element.image}/>
+                <img className="w-[16vmax] h-[30vh]" src={props.element.image}/>
             </div>
             <div>{props.element.title}</div>
-            <div style={{width:"auto", color:"white",backgroundColor:"green",borderRadius:"5px",display:"flex",justifyContent:"space-evenly",alignItems:"center",padding:"2%"}}>
+            <div className="w-auto text-white bg-green-700 rounded-sm flex justify-center gap-2 items-center p-3">
                 <div>{props.element.rating.rate}</div>
-                <div style={{alignSelf:"center"}}>
-                    <Rating style={{fontSize:"1em"}} defaultValue={props.element.rating.rate} precision={0.5} readOnly/>
+                <div className="self-center">
+                    <Rating className="text-xs" defaultValue={props.element.rating.rate} precision={0.5} readOnly/>
                 </div>
                 
             </div>

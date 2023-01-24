@@ -89,14 +89,14 @@ const ItemsPage=()=>{
             funcPriceDesc();
     },[state.results,state.category]),[state.results,state.category]);
     return(
-        <div style={{display:"flex",flexDirection:"column",width:"100%",backgroundColor:"#EEEEEE"}}>
+        <div className="flex flex-col w-full bg-white">
             <Categories/>
-            <div style={{width:"100%", height:"2vh",backgroundColor:"#CDE8F6"}}/>
-            <div className="main-sec-itemspage">
-                <div className="filter-sec-itemspage">
+            <div className="w-full h-[2vh] bg-sky-200"/>
+            <div className="flex justify-between items-center mb-5">
+                <div className="w-1/5 h-auto self-start ml-[3%] mt-2.5 rounded-md shadow-lg shadow-gray-500">
                     <FilterBar/>
                 </div>
-                <div className="grid-sec-products">
+                <div className="grid grid-cols-3 gap-3 mr-10 mt-2.5">
                 {   state.results &&
                     state.results.map((el)=>{
                         return <Card key={el.id} element={el}/>

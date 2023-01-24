@@ -17,11 +17,13 @@ function Addresses(props){
     },[updateAddres]);
 
     return(
-        <div style={{width:"100%",minHeight:"6vmax",padding:"2%", borderStyle:"solid",borderColor:"#D1D1D1",borderWidth:"1px"}}>
-            <div style={{width:"100%",minHeight:"auto", display:"flex",justifyContent:"space-between"}}>
+        <div className="w-full h-auto p-4 border border-gray-400">
+            <div className="w-full flex justify-between h-auto">
                 {element}
                 {editBttnShow
-                ?<div className="dots" onMouseOverCapture={()=>setEditBttnShow((prev)=>!prev)} style={{cursor:"pointer"}}><img style={{width:"20px"}} src={hamburger_dots}/></div>
+                ?<div className="dots cursor-pointer" onMouseOverCapture={()=>setEditBttnShow((prev)=>!prev)}>
+                    <img className="w-5" src={hamburger_dots}/>
+                </div>
                 :<div className="edit" onMouseLeave={()=>setEditBttnShow((prev)=>!prev)}>
                     <div onClick={e=>{
                     
@@ -31,7 +33,7 @@ function Addresses(props){
                     <div onClick={async e=>{
                         await dispatch({type:"delete-address",payload:element});
                         await dispatch({type:"add-address-to-DB"});
-                        navigation("/profile");
+                        navigation("/profile/addresses");
                         window.location.reload(true);
                     }}>Delete</div>    
                 </div>
@@ -39,18 +41,18 @@ function Addresses(props){
             </div>
             {editFieldShow? 
             <div>
-                <textarea style={{width:"100%",height:"5vmax", padding:"2%"}} defaultValue={element} onChange={e=>setUpdateAddress(e.target.value)} />
-                <div style={{display:"flex", justifyContent:"flex-start",gap:"2%",color:"white"}}>
+                <textarea className="w-full h-auto p-4 border border-gray-400 outline-none" defaultValue={element} onChange={e=>setUpdateAddress(e.target.value)} />
+                <div className="flex justify-start gap-2 text-white">
                     <div onClick={
                         async e=>{
                             //const user=await addAddress();
                             await dispatch({type:"update-address",payload:updateAddres,actualValue:element});
                             await dispatch({type:"add-address-to-DB"});
-                            navigation("/profile");
+                            navigation("/profile/addresses");
                             window.location.reload(true);
                         }
-                    } style={{width:"9vmax", padding:"2%", backgroundColor:"#2874f0",textAlign:"center",cursor:"pointer",borderRadius:"4px"}}>SAVE</div>
-                    <div onClick={e=>setEditFieldShow((prev)=>!prev)} style={{width:"9vmax", padding:"2%",backgroundColor:"#fb7a1b",textAlign:"center",cursor:"pointer",borderRadius:"4px"}}>CANCEL</div>
+                    } className="w-28 px-3 py-2 bg-blue-500 text-center cursor-pointer rounded-sm">SAVE</div>
+                    <div className="w-28 px-3 py-2 bg-orange-500 text-center cursor-pointer rounded-sm" onClick={e=>setEditFieldShow((prev)=>!prev)}>CANCEL</div>
                 </div>    
             </div>
             :""}

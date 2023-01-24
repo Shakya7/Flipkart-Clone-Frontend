@@ -6,10 +6,12 @@ import { useNavigate } from "react-router-dom";
 
 function Footer(){
     const navigation=useNavigate();
+    
     return(
-        <div className="footer">
-            <footer style={{display:'flex',flexDirection:"column",justifyContent:"center",alignItems:"center", gap:"30px"}}>
-                <div className="nav-footer" style={{display:"flex",gap:"30px"}}>
+        
+        <div className="w-full h-auto p-[23vmin] bg-blue-800 text-white flex justify-center items-center">
+            <footer className="flex flex-col justify-center items-center gap-7">
+                <div className="flex gap-7" >
                     <div className="nav-ft">What we do</div>
                     <div className="nav-ft">About</div>
                     <div className="nav-ft">Help Center</div>
@@ -24,9 +26,9 @@ function Footer(){
                 <div>
                     <p>Bansdroni, Kolkata-70</p>
                 </div>
-                <div style={{width:"70vmax",height:"1px",backgroundColor:"grey"}}/>
+                <div className="w-[70vmax] h-[1px] bg-gray-400"/>
                 <div>
-                    <p style={{fontSize:"0.8rem"}}>Copyright © 2022 Shakya Sarkar Inc. All rights reserved.</p>
+                    <p clasName="text-sm">Copyright © 2022 Shakya Sarkar Inc. All rights reserved.</p>
                 </div>
             </footer> 
         </div>
