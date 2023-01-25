@@ -104,83 +104,83 @@ const ProfilePage=(props)=>{
         }
     }*/
     return(
-        <div style={{position:"relative"}}>
+        <div className="relative">
             <Categories/>
-            <div style={{width:"100%",height:"auto", backgroundColor:"#EEEEEE",display:"flex", gap:"2%",alignItems:"flex-start",justifyContent:"center",paddingTop:'20px',paddingBottom:'20px'}}>
-                <div style={{display:"flex",flexDirection:"column",minWidth:"22%",height:"50%",backgroundColor:"#EEEEEE", gap:"20px"}}>
-                    <div style={{backgroundColor:"#21325E",width:"100%",height:"auto",boxShadow:"5px 5px 8px #476072",display:"flex",alignItems:"center",justifyContent:"flex-start",gap:"10px",padding:"10px",borderRadius:"5px"}}>
-                        <div style={{width:"60px",height:"60px", display:"flex",alignItems:"center",justifyContent:"center"}}>
-                            <img width={"50px"} height={"50px"} src={profile_avatar} style={{borderRadius:"50%"}}/>
+            <div className="w-full h-auto bg-gray-200 flex gap-10 items-start justify-center py-5">
+                <div className="flex flex-col h-1/2 bg-gray-200 gap-3">
+                    <div className="bg-blue-900 w-full h-auto flex items-center justify-start gap-4 p-2.5 rounded-md shadow-lg shadow-gray-500">
+                        <div className="w-[60px] h-[60px] flex items-center justify-center">
+                            <img className="w-12 h-12 rounded-full" src={profile_avatar}/>
                         </div>
-                        <div style={{display:"flex",flexDirection:"column",color:"white"}}>
-                            <div style={{fontSize:"0.8rem",marginBottom:"7px"}}>Hello,</div>
+                        <div className="flex flex-col text-white">
+                            <div className="text-xs mb-1.5">Hello,</div>
                             <div>{state.userProfile?state.userProfile.name:""}</div>
                         </div>     
                     </div>
-                    <div style={{backgroundColor:"#21325E",width:"100%",height:"auto",boxShadow:"5px 5px 8px #476072",borderRadius:"5px"}}>
-                        <div onClick={e=>navigation("/orders")} className="account-sub-sections" style={{display:"flex",justifyContent:"space-between",width:"100%",height:"50px"}}>
-                            <div style={{display:"flex",justifyContent:"flex-start",color:"white",fontWeight:"lighter",alignItems:"center",gap:"10px",paddingLeft:"25px"}}>
-                                <div><img style={{width:"30px"}} src={cart_logo}/></div>
+                    <div className="bg-blue-900 w-full h-auto rounded-md shadow-lg shadow-gray-500">
+                        <div onClick={e=>navigation("/orders")} className="account-sub-sections flex justify-between w-full h-12">
+                            <div className="flex justify-start text-white font-light items-center gap-3 pl-6">
+                                <div><img className="w-8" src={cart_logo}/></div>
                                 <div>MY ORDERS</div>
                             </div>
-                            <div style={{display:"flex",alignItems:"center"}}>
-                                <img width={"30px"} src={next_button}/>
+                            <div className="flex items-center">
+                                <img className="w-8" src={next_button}/>
                             </div>
                         </div>
-                        <div style={{width:"100%",height:"1px", backgroundColor:"grey"}}/>
-                        <div className="" style={{display:"flex",justifyContent:"space-between",width:"100%",height:"50px"}}>
-                            <div style={{display:"flex",justifyContent:"flex-start",color:"grey",fontWeight:"normal",alignItems:"center",gap:"10px",paddingLeft:"25px"}}>
-                                <div><img style={{width:"30px"}} src={user_profile}/></div>
+                        <div className="w-full h-px bg-gray-400"/>
+                        <div className="flex justify-between w-full h-12">
+                            <div className="flex justify-start text-gray-400 font-normal items-center gap-4 pl-6">
+                                <div><img className="w-8" src={user_profile}/></div>
                                 <div>ACCOUNT SETTINGS</div>
                             </div>
-                            <div style={{display:"flex",visibility:"hidden",alignItems:"center"}}>
-                                <img width={"30px"} src={next_button}/>
+                            <div className="flex invisible items-center">
+                                <img className="w-8" src={next_button}/>
                             </div>
                         </div>
                         <div onClick={()=>{
                             setAccountPage("profile-info");
                             navigation("/profile");
-                        }} className="account-sub-sections" style={{display:"flex",justifyContent:"center",alignItems:"center",width:"100%",height:"50px", color:"white",backgroundColor:`${accountPage==="profile-info"?"#344CB7":"inherit"}`}}>
+                        }} className="account-sub-sections flex justify-center items-center w-full h-12 text-white" style={{backgroundColor:`${accountPage==="profile-info"?"#344CB7":"inherit"}`}}>
                             Profile Information
                         </div>
                         <div onClick={()=>{
                             setAccountPage("addresses-info");
                             navigation("/profile/addresses");
-                            }} className="account-sub-sections" style={{display:"flex",justifyContent:"center",alignItems:"center",width:"100%",height:"50px",color:"white",backgroundColor:`${accountPage==="addresses-info"?"#344CB7":"inherit"}`}}>
+                            }} className="account-sub-sections flex justify-center items-center w-full h-12 text-white" style={{backgroundColor:`${accountPage==="addresses-info"?"#344CB7":"inherit"}`}}>
                             Manage Addresses
                         </div>
-                        <div style={{width:"100%",height:"1px", backgroundColor:"grey"}}/>
-                        <div className="account-sub-sections" style={{display:"flex",justifyContent:"space-between",width:"100%",height:"50px"}}>
-                            <div style={{display:"flex",justifyContent:"flex-start",color:"white",fontWeight:"lighter",alignItems:"center",gap:"10px",paddingLeft:"25px"}}>
-                                <div><img style={{width:"30px"}} src={user_payments}/></div>
+                        <div className="w-full h-px bg-gray-400"/>
+                        <div className="account-sub-sections flex justify-between w-full h-12">
+                            <div className="flex justify-start text-white font-light items-center gap-3 pl-6">
+                                <div><img className="w-8" src={user_payments}/></div>
                                 <div>PAYMENTS</div>
                             </div>
-                            <div style={{display:"flex",alignItems:"center"}}>
-                                <img width={"30px"} src={next_button}/>
+                            <div className="flex items-center">
+                                <img className="w-8" src={next_button}/>
                             </div>
                         </div>
-                        <div className="" style={{display:"flex",justifyContent:"space-between",width:"100%",height:"50px"}}>
-                            <div style={{display:"flex",justifyContent:"flex-start",color:"grey",fontWeight:"normal",alignItems:"center",gap:"10px",paddingLeft:"25px"}}>
-                                <div><img style={{width:"30px"}} src={my_stuff_logo}/></div>
+                        <div className="flex justify-between w-full h-12">
+                            <div className="flex justify-start text-gray-500 font-normal items-center gap-3 pl-6">
+                                <div><img className="w-8" src={my_stuff_logo}/></div>
                                 <div>MY STUFF</div>
                             </div>
-                            <div style={{display:"flex",visibility:"hidden",alignItems:"center"}}>
-                                <img width={"30px"} src={next_button}/>
+                            <div className="flex invisible items-center">
+                                <img className="w-8" src={next_button}/>
                             </div>
                         </div>
-                        <div className="account-sub-sections" style={{display:"flex",justifyContent:"center",alignItems:"center",width:"100%",height:"50px", color:"white"}}>
+                        <div className="account-sub-sections flex justify-center items-center w-full h-12 text-white">
                             {"My Reviews & Ratings"}
                         </div>
-                        <div className="account-sub-sections" style={{display:"flex",justifyContent:"center",alignItems:"center",width:"100%",height:"50px",color:"white"}}>
+                        <div className="account-sub-sections flex justify-center items-center w-full h-12 text-white">
                             All Notifications
                         </div>
                         <div onClick={e=>{
                             setAccountPage("wishlist-info");
                             navigation("wishlist");
-                            }} className="account-sub-sections" style={{display:"flex",justifyContent:"center",alignItems:"center",width:"100%",height:"50px",color:"white",backgroundColor:`${accountPage==="wishlist-info"?"#344CB7":"inherit"}`}}>
+                            }} className="account-sub-sections flex justify-center items-center w-full h-12 text-white" style={{backgroundColor:`${accountPage==="wishlist-info"?"#344CB7":"inherit"}`}}>
                             My Wishlist
                         </div>
-                        <div style={{width:"100%",height:"1px", backgroundColor:"grey"}}/>
+                        <div className="w-full h-px bg-gray-400"/>
                         <div onClick={
                             async e=>{
                                 dispatch({type:"logout"});
@@ -190,20 +190,20 @@ const ProfilePage=(props)=>{
                                 navigation("/");
                                 window.location.reload();
                             }
-                        } className="account-sub-sections" style={{display:"flex",justifyContent:"space-between",width:"100%",height:"50px"}}>
-                            <div style={{display:"flex",justifyContent:"flex-start",color:"white",fontWeight:"normal",alignItems:"center",gap:"10px",paddingLeft:"25px"}}>
-                                <div><img style={{width:"30px"}} src={logout_logo}/></div>
+                        } className="account-sub-sections flex justify-between w-full h-12">
+                            <div className="flex justify-start text-white font-normal items-center gap-3 pl-6">
+                                <div><img className="w-8" src={logout_logo}/></div>
                                 <div>Logout</div>
                             </div>
-                            <div style={{display:"flex",visibility:"hidden",alignItems:"center"}}>
-                                <img width={"30px"} src={next_button}/>
+                            <div className="flex invisible items-center">
+                                <img className="w-8" src={next_button}/>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div style={{display:"flex",flexDirection:"column",width:"65%",height:"auto", boxShadow:"3px 3px 5px grey"}}>
+                <div className="flex flex-col w-[65%] h-auto shadow-lg shadow-gray-500">
                     {accountPage==="profile-info"?
-                    <form style={{minWidth:"65%",height:"auto", backgroundColor:"white",display:"flex",padding:"4%",flexDirection:"column",gap:"80px"}}>
+                    <form className="min-w-[65%] h-auto bg-white flex p-[4%] flex-col gap-[80px]">
                         <div className="form-personal-info" syle={{display:"flex",flexDirection:"column",gap:"10px"}}> 
                             <div style={{display:"flex",gap:"5%"}}>
                                 <div style={{fontSize:"1.3rem",fontWeight:"bold"}}>Personal Information</div>
