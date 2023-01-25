@@ -32,11 +32,11 @@ export function ResetPass(){
                 <h1>Password Reset</h1>
                 <div>
                     <p>New Password</p>
-                    <input placeholder="Type your new password" type="password" className="reset-pw-inp" onChange={e=>setResetPOptions({...resetPOptions,newPassword:e.target.value})}/>
+                    <input placeholder="Type your new password" type="password" className="w-[25vmax] h-[10vmin] border border-gray-300 pl-2.5" onChange={e=>setResetPOptions({...resetPOptions,newPassword:e.target.value})}/>
                 </div>
                 <div>
                     <p>Confirm New Password</p>
-                    <input placeholder="Re-type your new password to confirm" type="password" className="reset-pw-inp" onChange={e=>setResetPOptions({...resetPOptions,confirmNewPassword:e.target.value})}/>
+                    <input placeholder="Re-type your new password to confirm" type="password" className="w-[25vmax] h-[10vmin] border border-gray-300 pl-2.5" onChange={e=>setResetPOptions({...resetPOptions,confirmNewPassword:e.target.value})}/>
                 </div>
                 {showError && <p className="text-red-600">Password change not successful. Make sure you are entering the same passwords in both fields.</p>}
                 <div onClick={async e=>{

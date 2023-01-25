@@ -1,6 +1,6 @@
 function  LoadingSpinner(){
     return(
-        <div className="modalBackground" style={{backdropFilter: "blur(10px)"}}>
+        <div className="fixed top-0 left-0 w-screen h-screen backdrop-blur-sm z-10 flex justify-center items-center" style={{backdropFilter: "blur(10px)"}}>
             <div className="loading-spinner">
                 <div className="lds-ring">
                     <div></div>
@@ -8,7 +8,7 @@ function  LoadingSpinner(){
                     <div></div>
                     <div></div>
                 </div>
-                <div style={{color:"white"}}>Loading...</div>
+                <div className="text-black">Loading...</div>
             </div>
         </div>
     )

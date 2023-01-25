@@ -154,63 +154,12 @@ label{
   justify-content: center;
   align-items: center;
 }
-/*.modalBackground{
-  position: fixed;
-  transform: translate(-50%, -50%);
-  width: 70%;
-  top:0;
-  background-color: white;
-  padding: 6rem;
-  border-radius: 5px;
-  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
-  z-index: 10;
-}*/
-.modalBackground{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(2px);
-  z-index: 5;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  
-}
-.modalContainer{
-  width:50%;
-  height:80vh;
-  background-color: white;
-  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
-  border-radius: 5px;
-  display:flex;
-  justify-content:space-around;
-  padding: 4%;
-  position: relative;
-}
-.reset-pw-inp{
-  width: 25vmax;
-  height:10vmin;
-  border-color:#D1D1D1;
-  border-width: 1px;
-  padding-left: 10px;
-}
+
 input[type="password"]:focus{
   outline:none;
   border-color:#2874f0;
 }
-.ip-highlight{
-  width: 25vmax;
-  height:10vmin;
-  border-color:#D1D1D1;
-  border-width: 1px;
-  padding-left: 10px;
-}
-.ip-highlight:focus{
-  background-color: #FFF89A !important;
-}
+
 
 
 .img-footer{

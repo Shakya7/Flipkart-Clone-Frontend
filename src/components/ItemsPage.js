@@ -89,7 +89,7 @@ const ItemsPage=()=>{
             funcPriceDesc();
     },[state.results,state.category]),[state.results,state.category]);
     return(
-        <div className="flex flex-col w-full bg-white">
+        <div className="flex flex-col w-full bg-gray-200">
             <Categories/>
             <div className="w-full h-[2vh] bg-sky-200"/>
             <div className="flex justify-between items-center mb-5">
