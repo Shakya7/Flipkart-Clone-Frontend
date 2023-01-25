@@ -51,19 +51,19 @@ function Login(props){
     return(
         <div>
             <Categories/>
-            <div style={{display:"flex",justifyContent:"center",alignItems:"center",width:"100%",height:"auto",backgroundColor:"#EEEEEE",padding:"50px"}}>
-                <div style={{display:"flex",boxShadow:"4px 4px 6px grey",width:"53vmax",height:"auto"}}>
-                    <div style={{width:"23vmax",height:"auto",backgroundColor:"#2874f0",padding:"20px",paddingTop:"30px",paddingLeft:"15px",display:"flex",flexDirection:"column"}}>
-                        <div style={{fontSize:"1.8rem",color:"white"}}>Login</div>
+            <div className="flex justify-center items-center w-full h-auto bg-white p-12">
+                <div className="flex h-auto shadow-lg shadow-gray-500 w-[53vmax]">
+                    <div className="w-[23vmax] h-auto bg-blue-700 p-5 flex flex-col">
+                        <div className="text-white text-3xl">Login</div>
                         <br/>
                         <br/>
-                        <div style={{fontSize:"1rem",color:"white"}}>Get access to your Orders, Wishlist and Recommendations</div>
-                        <div style={{display:"flex",justifyContent:"center",marginTop:"50%"}}>
-                            <img style={{width:"auto"}} src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/login_img_c4a81e.png"/>
+                        <div className="text-base text-white">Get access to your Orders, Wishlist and Recommendations</div>
+                        <div className="flex justify-center mt-[50%]">
+                            <img className="w-auto" src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/login_img_c4a81e.png"/>
                         </div>
                     </div>
-                    <div style={{width:"30vmax",height:"auto",backgroundColor:"white",padding:"25px",paddingTop:"30px",paddingLeft:"15px",display:"flex",flexDirection:"column"}}>
-                        <form style={{display:"flex",flexDirection:"column"}}>
+                    <div className="w-[30vmax] h-auto bg-white flex flex-col p-6">
+                        <form className="flex flex-col">
                             <input onFocus={e=>{
                                 if(failure)
                                 {
@@ -74,7 +74,7 @@ function Login(props){
                             }} value={inputState.email} onChange={e=>setInputState({
                                 ...inputState,
                                 email:e.target.value
-                            })} placeholder="Enter email/ phone number" className="login-input" style={{borderTop:"none",borderLeft:"none",borderRight:"none",padding:"20px"}} type="text"/>
+                            })} placeholder="Enter email/ phone number" className="text-base p-5 outline-none border border-gray-500 focus:border-blue-500" type="text"/>
                             <br/>
                             <input onFocus={e=>{
                                 if(failure)
@@ -86,13 +86,13 @@ function Login(props){
                             }} value={inputState.password} onChange={e=>setInputState({
                                 ...inputState,
                                 password:e.target.value
-                            })} placeholder="Enter password" className="login-input" style={{borderTop:"none",borderLeft:"none",borderRight:"none",padding:"20px"}} type="password"/>
+                            })} placeholder="Enter password" className="text-base p-5 outline-none border border-gray-500 focus:border-blue-500" type="password"/>
                             <br/>
-                            {failure?<p style={{color:"red",textAlign:"center"}}>Login failed. Make sure you are entering correct email address and password</p>:""}
+                            {failure?<p className="text-red-600 text-center">Login failed. Make sure you are entering correct email address and password</p>:""}
                             
-                            <div style={{display:"flex",flexDirection:"column",marginTop:"5%"}}>
-                                <p style={{textAlign:"center"}}>By continuing, you agree to Flipkart's Terms of Use and Privacy Policy.</p>
-                                <div style={{display:"flex",justifyContent:"center",alignItems:"center",marginTop:"10%"}} onClick={
+                            <div className="flex flex-col mt-[5%]">
+                                <p className="text-center">By continuing, you agree to Flipkart's Terms of Use and Privacy Policy.</p>
+                                <div className="flex justify-center items-center mt-[10%]" onClick={
                                     async e=>{
                                         try{
                                         setIsLoading(true);
@@ -111,20 +111,20 @@ function Login(props){
                                         }
                                     }
                                 }>
-                                    <div style={{width:"60%",backgroundColor:"#fb641b",padding:"20px",textAlign:"center",color:"white",cursor:"pointer"}}>
+                                    <div className="w-3/5 bg-orange-500 p-5 text-center text-white cursor-pointer">
                                         {!isLoading?"Login":
-                                        <div style={{display:"flex",gap:"20px",justifyContent:"center",alignItems:"center"}}>
+                                        <div className="flex gap-5 justify-center items-center">
                                             <p>Logging in...</p>
                                             <SaveSpinner/>
                                          </div>
                                         }
                                     </div>
                                 </div>
-                                <p onClick={e=>setForgotPModal(true)} style={{textAlign:"center",cursor:"pointer",color:"#2874f0"}}>Forgot your password?</p>
+                                <p onClick={e=>setForgotPModal(true)} className="text-center cursor-pointer text-blue-600">Forgot your password?</p>
                             </div>
                             <div onClick={
                                 e=>navigation("/signup")
-                            } style={{display:"flex",justifyContent:"center",alignItems:"center", color:"#2874f0",marginTop:"50px",cursor:"pointer", textAlign:"center"}}>
+                            } className="flex justify-center items-center text-blue-600 mt-12 text-center cursor-pointer">
                                 New to Flipkart? Create an account
                             </div>
                         </form>

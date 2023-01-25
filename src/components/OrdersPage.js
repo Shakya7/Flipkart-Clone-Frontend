@@ -46,22 +46,22 @@ function OrdersPage(){
     return(
         <div>
             <Categories/>
-            <div style={{width:"100%",minHeight:"auto", backgroundColor:"#EEEEEE",display:"flex", gap:"2%",alignItems:"flex-start",justifyContent:"center",paddingTop:'20px',paddingBottom:'20px'}}>
-                <div style={{minWidth:"20%", backgroundColor:"#21325E",height:"200px", color:"white",borderRadius:"4px", boxShadow:"5px 5px 8px #476072",position:"relative"}}>
-                    <div style={{display:"flex",justifyContent:"center",alignItems:"center",flexDirection:"column",marginTop:"5%",gap:10}}>
+            <div className="w-full min-h-auto bg-white flex gap-2 items-start justify-evenly py-5">
+                <div className="w-1/5 bg-blue-900 h-52 text-white rounded-md relative shadow-lg shadow-gray-500">
+                    <div className="flex justify-center items-center flex-col mt-[5%] gap-5">
                         <p>Filter effects</p>
-                        <div stype={{display:"flex"}}>
-                            <div>
+                        <div className="flex flex-col gap-4">
+                            <div className="flex gap-3">
                                 <label>Price: ₹</label>
-                                <input value={priceFilter} onChange={e=>setPriceFilter(e.target.value)} type="number" style={{width:"5vw",textAlign:"center"}}/>
+                                <input className="text-center w-[5vw] text-black" value={priceFilter} onChange={e=>setPriceFilter(e.target.value)} type="number"/>
                             </div>
-                            <div style={{display:"flex"}}>
+                            <div className="flex gap-3">
                                 <input min="0" value={priceFilter} onChange={(e)=>{
                                     setPriceFilter(e.target.value);
                                     //loadData().then(res=>dispatch({type:"search-order-by-price",payload:res,price:priceFilter}))//
                                     //await dispatch({type:"search-order-by-price",payload:data,price:priceFilter});
                                 }} step="1" max="10000" type={"range"}/>
-                                <button style={{cursor:"pointer"}}onClick={async e=>{
+                                <button className="cursor-pointer bg-black px-1.5 rounded-md" onClick={async e=>{
                                     let data=await loadData();
                                     dispatch({type:"search-order-by-price",payload:data,price:priceFilter})
                                 }}>Search</button>
@@ -74,24 +74,23 @@ function OrdersPage(){
                         await dispatch({type:"load-user-data",payload:data});
                         setSearchInp("");
                         document.querySelector(".srch").value="";
-                    }} style={{position:"absolute",bottom:10,right:10}} className="clear-filter">Clear</div>
+                    }} className="absolute bottom-5 right-5 text-sm w-auto bg-red-500 px-2.5 py-1 rounded-md shadow-lg shadow-blue-500 cursor-pointer transition-colors ease-in-out duration-500 hover:bg-white hover:text-black">Clear</div>
                 </div>
-                <div style={{width:"65%", backgroundColor:"#EEEEEE",minHeight:"200px",display:"flex",flexDirection:"column",gap:"20px"}}>
-                    <div style={{display:"flex"}}>
-                        <input className="srch" style={{width:"80%",height:"3vmax", borderRadius:"5px 0 0 5px", paddingLeft:"2%",borderColor:"#D1D1D1"}} onChange={e=>setSearchInp(e.target.value)} type="text" placeholder="Search orders by destination address keywords..."/>
-                        <div style={{backgroundColor:"blue",display:"flex",justifyContent:"space-evenly",alignItems:"center", padding:"5px", color:"white",fontSize:"0.8rem",fontWeight:"bold",width:"20%",gap:"5%",borderRadius:"0 5px 5px 0",cursor:"pointer"}}>
-                            <img  width={"20px"} src={search_icon}/>
+                <div className="w-2/3 bg-white flex flex-col h-auto gap-5">
+                    <div className="flex">
+                        <input className="srch w-4/5 h-[3vmax] rounded-l-md pl-[2%] border border-gray-400" onChange={e=>setSearchInp(e.target.value)} type="text" placeholder="Search orders by destination address keywords..."/>
+                        <div className="bg-blue-500 flex justify-evenly items-center p-1.5 text-white font-bold text-sm w-1/5 gap-5 rounded-r-md cursor-pointer">
+                            <img className="w-5" src={search_icon}/>
                             <p onClick={async()=>{
                                 let data=await loadData();
                                 dispatch({type:"search-order-by-address",payload:data,term:searchInp});
                             }}>Search orders</p>
                         </div>
                     </div>
-                    {/*<div>Hello</div>*/}
                     {
-                    state.userProfile
-                    ?(state.userProfile.orders.length!==0?state.userProfile.orders.map((el,i)=><OrderBlocks item={el} key={i}/>):"Sorry, no orders delivered on this address/ within this range")
-                    :"There are no orders placed yet..."
+                        state.userProfile
+                        ?(state.userProfile.orders.length!==0?state.userProfile.orders.map((el,i)=><OrderBlocks item={el} key={i}/>):"Sorry, no orders delivered on this address/ within this range")
+                        :"There are no orders placed yet..."
                     }
                 </div>
             </div>

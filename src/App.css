@@ -80,15 +80,6 @@ label{
   background-color: rgb(120, 198, 250);
 }
 
-
-.login-input{
-  font-size: 1.1rem;
-}
-.login-input:focus{
-  outline: none;
-  border-color: #2874f0;
-  transition: border 0.2s ease-out;
-}
 .product-scale{
   transition: transform 0.4s ease-in-out;
 }
@@ -149,14 +140,6 @@ label{
 }
 .edit > div:hover{
   color:blue;
-}
-.wishlist-img{
-  width: 12%
-}
-.delete-icon{
-  width:3%;
-  height:3%;
-  cursor: pointer;
 }
 .overlay{
   position: fixed;
@@ -228,16 +211,7 @@ input[type="password"]:focus{
 .ip-highlight:focus{
   background-color: #FFF89A !important;
 }
-.orders-img{
-  width:60px
-}
-.order-block{
-  transition: transform 0.4s ease-in-out;
-}
-.order-block:hover{
-  transform:scale(1.05,1.05);
-  cursor:"pointer";
-}
+
 
 .img-footer{
   display: flex;
