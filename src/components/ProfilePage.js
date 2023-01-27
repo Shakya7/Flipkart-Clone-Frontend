@@ -107,7 +107,7 @@ const ProfilePage=(props)=>{
         <div className="relative">
             <Categories/>
             <div className="w-full h-auto bg-gray-200 flex gap-10 items-start justify-center py-5">
-                <div className="flex flex-col h-1/2 bg-gray-200 gap-3">
+                <div className="flex w-[22%] flex-col h-1/2 bg-gray-200 gap-3">
                     <div className="bg-blue-900 w-full h-auto flex items-center justify-start gap-4 p-2.5 rounded-md shadow-lg shadow-gray-500">
                         <div className="w-[60px] h-[60px] flex items-center justify-center">
                             <img className="w-12 h-12 rounded-full" src={profile_avatar}/>
@@ -188,7 +188,6 @@ const ProfilePage=(props)=>{
                                     withCredentials:true
                                 });
                                 navigation("/");
-                                window.location.reload();
                             }
                         } className="account-sub-sections flex justify-between w-full h-12">
                             <div className="flex justify-start text-white font-normal items-center gap-3 pl-6">
@@ -204,22 +203,22 @@ const ProfilePage=(props)=>{
                 <div className="flex flex-col w-[65%] h-auto shadow-lg shadow-gray-500">
                     {accountPage==="profile-info"?
                     <form className="min-w-[65%] h-auto bg-white flex p-[4%] flex-col gap-[80px]">
-                        <div className="form-personal-info" syle={{display:"flex",flexDirection:"column",gap:"10px"}}> 
-                            <div style={{display:"flex",gap:"5%"}}>
-                                <div style={{fontSize:"1.3rem",fontWeight:"bold"}}>Personal Information</div>
+                        <div className="flex flex-col gap-[10px]"> 
+                            <div className="flex gap-[5%]">
+                                <div className="text-xl font-bold">Personal Information</div>
                                 <div onClick={e=>{
                                     setProfileDetails({
                                         ...profileDetails,
                                         profile_edit:!profileDetails.profile_edit
                                     })
-                                }} style={{color:"blue",cursor:"pointer"}}>{profileDetails.profile_edit?<p>Cancel</p>:<p>Edit</p>}</div>
+                                }} className="text-blue-700 cursor-pointer">{profileDetails.profile_edit?<p className="text-red-600">Cancel</p>:<p>Edit</p>}</div>
                             </div>
-                            <div style={{display:"flex",marginTop:"3%",gap:"2%"}}>
+                            <div className="flex mt-[3%] gap-[2%]">
                                 <input defaultValue={profileDetails.profile_val_fname} type="text" disabled={profileDetails.profile_edit?false:true} onChange={e=>setProfileDetails({
                                     ...profileDetails,
                                     profile_val_fname:e.target.value
-                                })} placeholder="First name..."/>
-                                <input type="text" defaultValue={profileDetails.profile_val_lname} disabled={profileDetails.profile_edit?false:true} onChange={e=>setProfileDetails({
+                                })} className="w-[20vmax] h-[3.6vmax] pl-[2%] rounded-md bg-gray-300" placeholder="First name..."/>
+                                <input type="text" className="w-[20vmax] h-[3.6vmax] pl-[2%] rounded-md bg-gray-300" defaultValue={profileDetails.profile_val_lname} disabled={profileDetails.profile_edit?false:true} onChange={e=>setProfileDetails({
                                     ...profileDetails,
                                     profile_val_lname:e.target.value
                                 })} placeholder="Last name..."/>
@@ -238,13 +237,13 @@ const ProfilePage=(props)=>{
                                         setIsLoading(false);
                                         //window.location.reload(true);
                                     }
-                                } style={{width:"100px",display:"flex",justifyContent:"center",alignItems:"center",backgroundColor:"#2874f0",color:"white",borderRadius:"3px",cursor:"pointer"}}>{!isLoading?"SAVE":<SaveSpinner/>}</div>:""}
+                                } className="w-[100px] flex justify-center items-center bg-blue-500 text-white rounded-sm cursor-pointer">{!isLoading?"SAVE":<SaveSpinner/>}</div>:""}
                             </div>
-                            <div style={{display:"flex", flexDirection:"column",marginTop:"3%"}}>
+                            <div className="flex flex-col mt-[3%]">
                                 <p>Your Gender</p>
-                                <div style={{display:"flex",marginTop:"2%"}}>
+                                <div className="flex mt-[2%]">
                                     <div>
-                                        <input checked={profileDetails.gender_val==="Male"?true:false} disabled={profileDetails.profile_edit?false:true} type="radio" name="gender" value="Male" onChange={e=>{
+                                        <input className="mr-2.5" checked={profileDetails.gender_val==="Male"?true:false} disabled={profileDetails.profile_edit?false:true} type="radio" name="gender" value="Male" onChange={e=>{
                                             setProfileDetails({
                                                 ...profileDetails,
                                                 gender_val:e.target.value
@@ -252,8 +251,8 @@ const ProfilePage=(props)=>{
                                         }}/>
                                         <label>Male</label>
                                     </div>
-                                    <div style={{marginLeft:"3%"}}>
-                                        <input checked={profileDetails.gender_val==="Female"?true:false} disabled={profileDetails.profile_edit?false:true} type="radio" name="gender" value="Female" onChange={e=>{
+                                    <div className="ml-[3%]">
+                                        <input className="mr-2.5" checked={profileDetails.gender_val==="Female"?true:false} disabled={profileDetails.profile_edit?false:true} type="radio" name="gender" value="Female" onChange={e=>{
                                             setProfileDetails({
                                                 ...profileDetails,
                                                 gender_val:e.target.value
@@ -264,12 +263,12 @@ const ProfilePage=(props)=>{
                                 </div>
                             </div>
                         </div>
-                        <div className="form-email-address" style={{display:"flex",flexDirection:"column"}}>
-                            <div style={{display:"flex",gap:"5%"}}>
-                                <div style={{fontSize:"1.3rem",fontWeight:"bold"}}>Email Address</div>
-                                <div style={{color:"blue",cursor:"pointer",display:"flex",gap:"15px"}}>{profileDetails.email_edit?
+                        <div className="flex flex-col">
+                            <div className="flex gap-[5%]">
+                                <div className="text-xl font-bold">Email Address</div>
+                                <div className="text-blue-700 cursor-pointer flex gap-[15px]">{profileDetails.email_edit?
                                     <div>
-                                        <p onClick={e=>{
+                                        <p className="text-red-600" onClick={e=>{
                                         setProfileDetails({
                                         ...profileDetails,
                                         email_edit:!profileDetails.email_edit
@@ -285,7 +284,7 @@ const ProfilePage=(props)=>{
                                     <p onClick={e=>setShowModal(true)}>Change password</p>
                                 </div>
                             </div>
-                            <div style={{display:"flex",marginTop:"3%",gap:"2%"}}>
+                            <div className="flex mt-[3%] gap-[2%]">
                                 <input onChange={
                                     e=>{
                                         setProfileDetails({
@@ -293,7 +292,7 @@ const ProfilePage=(props)=>{
                                             profile_val_email:e.target.value
                                         })
                                     }
-                                } type="text" disabled={profileDetails.email_edit?false:true} placeholder="Email address..."/>
+                                } type="text" className="w-[20vmax] h-[3.6vmax] pl-[2%] rounded-md bg-gray-300" disabled={profileDetails.email_edit?false:true} placeholder="Email address..."/>
                                 {profileDetails.email_edit?<div onClick={
                                     async e=>{
                                         try{
@@ -315,20 +314,20 @@ const ProfilePage=(props)=>{
                                             setIsLoading(false);
                                         }
                                     }
-                                } style={{width:"100px",display:"flex",justifyContent:"center",alignItems:"center",backgroundColor:"#2874f0",color:"white",borderRadius:"3px",cursor:"pointer"}}>{!isLoading?"SAVE":<SaveSpinner/>}</div>:""}
+                                } className="w-[100px] flex justify-center items-center bg-blue-700 text-white rounded-sm cursor-pointer">{!isLoading?"SAVE":<SaveSpinner/>}</div>:""}
                             </div>
                         </div>
-                        <div className="form-mobile">
-                            <div style={{display:"flex",gap:"5%"}}>
-                                <div style={{fontSize:"1.3rem",fontWeight:"bold"}}>Mobile Number</div>
+                        <div>
+                            <div className="flex gap-[5%]">
+                                <div className="text-xl font-bold">Mobile Number</div>
                                 <div onClick={e=>{
                                     setProfileDetails({
                                         ...profileDetails,
                                         mobile_edit:!profileDetails.mobile_edit
                                     })
-                                }} style={{colCancelor:"blue",cursor:"pointer"}}><p style={{color:"blue"}}>Edit</p></div>
+                                }} className="text-blue-700 cursor-pointer">{profileDetails.mobile_edit?<p className="text-red-600">Cancel</p>:<p>Edit</p>}</div>
                             </div>
-                            <div style={{display:"flex",marginTop:"3%",gap:"2%"}}>
+                            <div className="flex mt-[3%] gap-[2%]">
                                 <input onChange={
                                     e=>{
                                         setProfileDetails({
@@ -336,7 +335,7 @@ const ProfilePage=(props)=>{
                                             profile_val_mobile:e.target.value
                                         })
                                     }
-                                } defaultValue={profileDetails.profile_val_mobile} type="text" placeholder="Mobile Number..." disabled={profileDetails.mobile_edit?false:true} />
+                                } className="w-[20vmax] h-[3.6vmax] pl-[2%] rounded-md bg-gray-300" defaultValue={profileDetails.profile_val_mobile} type="text" placeholder="Mobile Number..." disabled={profileDetails.mobile_edit?false:true} />
                                 {profileDetails.mobile_edit?<div onClick={
                                     async e=>{
                                         setIsLoading(true);
@@ -350,36 +349,36 @@ const ProfilePage=(props)=>{
                                         setIsLoading(false);
                                         //window.location.reload(true);
                                     }
-                                } style={{width:"100px",display:"flex",justifyContent:"center",alignItems:"center",backgroundColor:"#2874f0",color:"white",borderRadius:"3px",cursor:"pointer"}}>{!isLoading?"SAVE":<SaveSpinner/>}</div>:""}
+                                } className="w-[100px] flex justify-center items-center bg-blue-700 text-white rounded-sm cursor-pointer">{!isLoading?"SAVE":<SaveSpinner/>}</div>:""}
                             </div>
                         </div>
-                        <div style={{width:"",display:"flex",flexDirection:"column",}}>
+                        <div className="flex flex-col">
                             <p><b>FAQs</b></p>
-                            <p className="faq-sec-1"><b>What happens when I update my email address (or mobile number)?</b></p>
-                            <p className="faq-sec">Your login email id (or mobile number) changes, likewise. You'll receive all your account related communication on your updated email address (or mobile number).</p>
-                            <p className="faq-sec"><b>When will my Flipkart account be updated with the new email address (or mobile number)?</b></p>
-                            <p className="faq-sec">It happens as soon as you confirm the verification code sent to your email (or mobile) and save the changes.</p>
-                            <p className="faq-sec"><b>What happens to my existing Flipkart account when I update my email address (or mobile number)?</b></p>
-                            <p className="faq-sec">Updating your email address (or mobile number) doesn't invalidate your account. Your account remains fully functional. You'll continue seeing your Order history, saved information and personal details.</p>
-                            <p className="faq-sec"><b>Does my Seller account get affected when I update my email address?</b></p>
-                            <p className="faq-sec">Flipkart has a 'single sign-on' policy. Any changes will reflect in your Seller account also.</p>
+                            <p className="mt-[3.5%]"><b>What happens when I update my email address (or mobile number)?</b></p>
+                            <p className="mt-[2%]">Your login email id (or mobile number) changes, likewise. You'll receive all your account related communication on your updated email address (or mobile number).</p>
+                            <p className="mt-[2%]"><b>When will my Flipkart account be updated with the new email address (or mobile number)?</b></p>
+                            <p className="mt-[2%]">It happens as soon as you confirm the verification code sent to your email (or mobile) and save the changes.</p>
+                            <p className="mt-[2%]"><b>What happens to my existing Flipkart account when I update my email address (or mobile number)?</b></p>
+                            <p className="mt-[2%]">Updating your email address (or mobile number) doesn't invalidate your account. Your account remains fully functional. You'll continue seeing your Order history, saved information and personal details.</p>
+                            <p className="mt-[2%]"><b>Does my Seller account get affected when I update my email address?</b></p>
+                            <p className="mt-[2%]">Flipkart has a 'single sign-on' policy. Any changes will reflect in your Seller account also.</p>
                             
                         </div>
-                        <div style={{color:"#2874f0"}} className="deactivate">
+                        <div className="cursor-pointer text-blue-700">
                             Deactivate Account
                         </div>
                     </form>:(
                     accountPage==="addresses-info"?
                     <div >
-                        <form style={{minWidth:"65%",height:"auto", backgroundColor:"white",display:"flex",padding:"4%",flexDirection:"column",gap:"20px"}}>
-                            <div style={{fontSize:"1.3rem", fontWeight:"bold"}}>Manage Addresses</div>
-                            {addAddressBttn?<div onClick={e=>setAddAddressBttn((prev)=>!prev)} style={{display:"flex",justifyContent:"flex-start",alignItems:"center", color:"blue", borderWidth:"1px" ,borderColor:"grey", borderStyle:"solid", padding:"2%", fontSize:"1rem", cursor:"pointer"}}>
-                                <div style={{marginRight:"3%",fontSize:"1.2rem"}}>+</div>
+                        <form className="min-w-[65%] h-auto bg-white flex p-[4%] flex-col gap-[20px]">
+                            <div className="text-xl font-bold">Manage Addresses</div>
+                            {addAddressBttn?<div onClick={e=>setAddAddressBttn((prev)=>!prev)} className="flex justify-start items-center text-blue-700 border border-gray-400 p-[2%] font-normal cursor-pointer">
+                                <div className="mr-[3%]">+</div>
                                 <div>ADD A NEW ADDRESS</div>
                             </div>:
                             <div>
-                                <textarea style={{width:"100%",height:"5vmax", padding:"2%"}} onChange={e=>setNewAddress(e.target.value)} />
-                                <div style={{display:"flex", justifyContent:"flex-start",gap:"2%",color:"white"}}>
+                                <textarea className="w-full h-[5vmax] p-[2%] border border-gray-400 outline-none" onChange={e=>setNewAddress(e.target.value)} />
+                                <div className="flex justify-start gap-[2%] text-white">
                                     <div onClick={
                                         async e=>{
                                             await dispatch({type:"add-address",payload:newAddress});
@@ -387,8 +386,8 @@ const ProfilePage=(props)=>{
                                             navigation("/profile");
                                             window.location.reload(true);
                                         }
-                                    } style={{width:"9vmax", padding:"2%", backgroundColor:"#2874f0",textAlign:"center",cursor:"pointer",borderRadius:"4px"}}>SAVE</div>
-                                    <div onClick={e=>setAddAddressBttn((prev)=>!prev)} style={{width:"9vmax", padding:"2%",backgroundColor:"#fb7a1b",textAlign:"center",cursor:"pointer",borderRadius:"4px"}}>CANCEL</div>
+                                    } className="w-28 px-3 py-2 bg-blue-500 bg-blue-600 text-center cursor-pointer rounded-md">SAVE</div>
+                                    <div onClick={e=>setAddAddressBttn((prev)=>!prev)} className="w-28 px-3 py-2 bg-orange-500 text-center cursor-pointer rounded-md">CANCEL</div>
                                 </div>    
                             </div>
                             }   
@@ -408,11 +407,11 @@ const ProfilePage=(props)=>{
                     </div>:
                     accountPage==="wishlist-info"?
                     <div>
-                        <div style={{backgroundColor:"white",padding:"4%"}}>
-                            <p style={{fontSize:"1.3rem", fontWeight:"bold"}}>My Wishlist</p>
+                        <div className="bg-white p-[4%]">
+                            <p className="text-xl font-bold">My Wishlist</p>
                             {
                             state.wishlist.length?
-                                <div style={{display:"flex",flexDirection:"column"}}>
+                                <div className="flex flex-col">
                                 {
                                     state.wishlist.map((el,i)=><Wishlist item={el} key={i}/>)
                                 }    
@@ -427,8 +426,8 @@ const ProfilePage=(props)=>{
                         Last case
                     </div>
                     )}
-                    <div style={{width:"100%"}}>
-                        <img style={{width:"inherit"}} src={account_btm_banner}/>
+                    <div className="w-full">
+                        <img className="w-full" src={account_btm_banner}/>
                     </div>
                 </div>   
             </div>

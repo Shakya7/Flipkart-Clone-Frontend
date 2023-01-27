@@ -97,37 +97,7 @@ label{
   cursor: pointer;
   background-color: #344CB7 !important;
 }
-.form-personal-info input[type=text]{
-  width: 20vmax;
-  height: 3.6vmax;
-  padding-left: 2%;
-  border-radius: 5px;
-}
-.form-personal-info input[type=radio]{
-  margin-right: 10px;
-}
-.form-email-address input[type=text]{
-  width: 20vmax;
-  height: 3.6vmax;
-  padding-left: 2%;
-  border-radius: 5px;
-}
-.form-mobile input[type=text]{
-  width: 20vmax;
-  height: 3.6vmax;
-  padding-left: 2%;
-  border-radius: 5px;
-}
 
-.deactivate:hover{
-  cursor:pointer;
-}
-.faq-sec{
-  margin-top:2%;
-}
-.faq-sec-1{
-  margin-top:3.5%;
-}
 .edit{
   width:5vmax;
   min-height:10vmin;
