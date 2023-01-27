@@ -25,7 +25,7 @@ export const Navbar=()=>{
     },[state.cart,hoverLogin,state.userProfile,state.showCart]);
     return(
         <div className="w-screen h-screen overflow-x-hidden">
-            <div className="bg-blue-500 w-full h-14 flex justify-around sticky top-0 z-10">
+            <div className="bg-blue-500 w-full min-h-[3.5rem] flex justify-around sticky top-0 z-10">
                 <img onClick={(e)=>{
                     dispatch({type:"show-cart-enable"});
                     dispatch({type:"no-cat"});
@@ -33,8 +33,8 @@ export const Navbar=()=>{
                     dispatch({type:"no-star"});
                     navigation("/");
                 }} className="self-center relative left-10 cursor-pointer" src={logo}/>
-                <div className="flex items-center w-[60vmax] h-[6vh] self-center relative left-[50px]">
-                    <input className="srch w-[75%] h-[6vh] self-center pl-5 outline-none" onChange={e=>setSearchTerm(e.target.value)} type="text" placeholder="Search for products..."/>
+                <div className="flex items-center w-[60vmax] my-1 h-[6vh] self-center relative left-[50px]">
+                    <input className="srch w-[75%] h-full self-center pl-5 outline-none" onChange={e=>setSearchTerm(e.target.value)} type="text" placeholder="Search for products..."/>
                     <div onClick={
                         async e=>{
                             dispatch({type:"search"});

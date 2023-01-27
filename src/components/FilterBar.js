@@ -34,7 +34,7 @@ function FilterBar(){
                         const results=await axios.get("https://fakestoreapi.com/products");
                         dispatch({type:"clear-filter",payload:results.data.filter((el)=>el.category==="men's clothing")})
                     }  
-                }} className="text-sm w-auto bg-red-500 px-2.5 py-1 rounded-md shadow-lg shadow-blue-500 cursor-pointer transition-colors ease-in-out duration-500 hover:bg-white hover:text-black">Clear all</div>
+                }} className="text-sm w-auto bg-red-500 px-2.5 py-1 rounded-md shadow-lg cursor-pointer transition-all ease-in-out duration-500 hover:bg-white hover:text-black hover:shadow-blue-500">Clear all</div>
             </div>
             <div className="h-[1px] bg-gray-400"/>
             <div className="p-5 text-white">
@@ -63,7 +63,7 @@ function FilterBar(){
                         <input min="0" value={priceFilter} onChange={(e)=>{
                             setPriceFilter(e.target.value);
                         }} step="10" max="1000" type={"range"}/>
-                        <button className="cursor-pointer bg-stone-900 px-1.5 rounded-md" onClick={async e=>{
+                        <button className="cursor-pointer bg-stone-900 px-1.5 rounded-md shadow-xl hover:shadow-blue-500" onClick={async e=>{
                             const results=await axios.get("https://fakestoreapi.com/products");
                             dispatch({type:"search-products-by-price",payload:results.data,price:priceFilter});
                         }}>Search</button>

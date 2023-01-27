@@ -7,7 +7,7 @@ import cart_logo from "../images/cart_logo.png";
 import love_disabled from "../images/wishlist_icon_disabled.png"
 import love_enabled from "../images/wishlist_icon_enabled.png"
 import { _500ServerError } from "./error-UI/_500ServerError";
-
+import Footer from "./Footer";
 
 export const SingleItemPage=(props)=>{
     //const {id}=useParams();
@@ -91,6 +91,7 @@ export const SingleItemPage=(props)=>{
             </div>:
             <_500ServerError/>
             }
+            <Footer/>
         </div>
     )
 }
