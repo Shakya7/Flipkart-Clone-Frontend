@@ -130,26 +130,6 @@ input[type="password"]:focus{
   border-color:#2874f0;
 }
 
-
-
-.img-footer{
-  display: flex;
-  gap:40px;
-}
-.img-footer > img{
-  width:30px;
-  cursor: pointer;
-  box-shadow: 3px 3px 7px #05014a;
-  border-radius:60% ;
-}
-.nav-ft{
-  transition: font-size 0.4s ease-out;
-}
-.nav-ft:hover{
-  font-size: 1.2rem;
-  cursor: pointer;
-  color:black;
-}
 .loading-spinner{
   width:40%;
   height:30vh;

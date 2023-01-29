@@ -13,7 +13,7 @@ function DropDown(props){
         {
             props.items.map((el,i)=>{
                 return(
-                    <div key={i} className="bg-white p-1.5 hover:bg-sky-400" onClick={e=>{
+                    <div key={i} className="bg-white p-1.5 hover:bg-sky-400 text-extraSmall xlsm:text-base" onClick={e=>{
                         if(el==="Women's clothing")
                         {
                             dispatch({type:"wc"});

@@ -32,11 +32,11 @@ export const SingleItemPage=(props)=>{
                 So we are simply rendering error page if location.state is not found
              */}
             {location.state?
-            <div className="flex w-full justify-between items-start p-5">
-                <div className="w-[45%] rounded-md flex flex-col justify-center items-center bg-white p-5 relative shadow-lg shadow-gray-500">
-                    <div className="cursor-pointer w-12 h-12 absolute top-2 right-2 rounded-full flex justify-center items-center shadow-lg shadow-gray-500">
+            <div className="flex w-full flex-col gap-4 xlg:gap-0 xlg:flex-row justify-between items-start p-5">
+                <div className="w-full xlg:w-[45%] rounded-md flex flex-col justify-center items-center bg-white p-5 relative shadow-lg shadow-gray-500">
+                    <div className="cursor-pointer w-[9vw] xlsm:w-12 h-[9vw] xlsm:h-12 absolute top-2 right-2 rounded-full flex justify-center items-center shadow-lg shadow-gray-500">
                         {state.userProfile && state.wishlist.find(el=>el.title===location.state.title)?
-                        <img width={30} onClick={async e=>{
+                        <img className="w-[5vw] xlsm:w-7" onClick={async e=>{
                             await dispatch({type:"remove-from-wishlist",payload:location.state});
                             await dispatch({type:"add-wishlist-to-DB"});
                         }} src={love_enabled}/>:
@@ -48,13 +48,13 @@ export const SingleItemPage=(props)=>{
                             else{
                                 navigation("/login");
                             }
-                        }} width={30} src={love_disabled}/>}
+                        }} className="w-[5vw] xlsm:w-7" src={love_disabled}/>}
                     </div>
-                    <img className="w-4/5 h-4/5" src={location.state.image}/>
+                    <img className="w-3/5 xlg:w-4/5 h-3/5 xlg:h-4/5" src={location.state.image}/>
                     {
                     state.cartProducts.find(el=>el.title===location.state.title)?
-                    <div onClick={()=>navigation("/cart")} className="w-1/3 h-1/5 flex justify-center bg-green-700 mt-8 cursor-pointer text-white rounded-md shadow-lg shadow-gray-500 gap-3">
-                        <img className="w-7" src={cart_logo}/>
+                    <div onClick={()=>navigation("/cart")} className="text-extraSmall xlsm:text-base w-fit h-1/5 flex px-2 justify-center bg-green-700 mt-8 cursor-pointer text-white rounded-md shadow-lg shadow-gray-500 gap-3">
+                        <img className="w-1/12 xlsm:w-7" src={cart_logo}/>
                         <div className="self-center">GO TO CART</div>
                     </div>:
                     <div onClick={(e)=>{
@@ -67,24 +67,25 @@ export const SingleItemPage=(props)=>{
                             navigation("/login");
                         }
                     }}
-                    className="w-1/3 h-1/5 flex justify-center bg-orange-500 mt-8 cursor-pointer text-white rounded-md shadow-lg shadow-gray-500 gap-3">
-                        <img src={cart_logo} className="w-7"/>
+                    className="text-extraSmall xlsm:text-base w-fit h-1/5 flex justify-center bg-orange-500 mt-8 cursor-pointer text-white rounded-md px-2 shadow-lg shadow-gray-500 gap-3">
+                        <img src={cart_logo} className="w-1/12 xlsm:w-7"/>
                         <div className="self-center">ADD TO CART</div>
                     </div>
                     }
                 </div>
-                <div className="rounded-md shadow-lg shadow-gray-500 w-[53%] bg-white">
+                <div className="rounded-md shadow-lg shadow-gray-500 w-full xlg:w-[53%] bg-white">
                     <div className="p-8">
-                        <p className="font-light text-2xl">{location.state.title}</p>
-                        <div className="mt-6 w-[15vmax] text-white bg-green-600 rounded-md flex justify-evenly items-center">
+                        <p className="font-light text-z xlsm:text-2xl">{location.state.title}</p>
+                        <div className="mt-6 w-fit px-1.5 text-extraSmall xlsm:text-base text-white bg-green-600 rounded-md flex justify-evenly flex-row gap-3 items-center">
                             <div>{location.state.rating.rate}</div>
-                            <div>
-                                <Rating defaultValue={location.state.rating.rate} precision={0.5} readOnly/>
+                            <p className="block xxxxsm:hidden">Ratings</p>
+                            <div className="hidden xxxxsm:block">
+                                <Rating size="small" defaultValue={location.state.rating.rate} precision={0.5} readOnly/>
                             </div>
                         </div>
-                        <p className="mt-6 font-bold text-2xl">₹{location.state.price}</p>
+                        <p className="mt-6 font-bold text-z xlsm:text-2xl">₹{location.state.price}</p>
                         <div>
-                            <p className="mt-6 font-normal text-xl"><span className="font-bold">Description: </span>{location.state.description}</p>
+                            <p className="mt-6 font-normal text-extraSmall xlsm:text-xl"><span className="font-bold">Description: </span>{location.state.description}</p>
                         </div>
                     </div>
                 </div>

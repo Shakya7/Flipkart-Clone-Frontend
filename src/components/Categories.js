@@ -27,7 +27,7 @@ const Categories=()=>{
 
                             }}>
                                 <img className="w-[15vmin] h-[10vmin]" src={cat_1}/>
-                                <p className="text-center">{categories[0]}</p>
+                                <p className="text-extraSmall xlsm:text-base text-center">{categories[0]}</p>
                             </div>
                             <DropDown show={cat1} pass={setCat1} items={["Women's clothing","Men's clothing"]}/>
                         </div>    
@@ -39,7 +39,7 @@ const Categories=()=>{
                         navigation("/");
                     }}>
                         <img className="w-[15vmin] h-[10vmin]" src={cat_2}/>
-                        <p className="text-center">{categories[1]}</p>
+                        <p className="text-extraSmall xlsm:text-base text-center">{categories[1]}</p>
                     </div>
                     <div className="fashion" onClick={(e)=>{
                         dispatch({type:"jewel"});
@@ -48,7 +48,7 @@ const Categories=()=>{
                         navigation("/");
                     }}>
                         <img className="w-[15vmin] h-[10vmin]" src={cat_3}/>
-                        <p className="text-center">{categories[2]}</p>
+                        <p className="text-extraSmall xlsm:text-base text-center">{categories[2]}</p>
                     </div>
                 </div>
                 <div className="w-full h-[2vh] bg-sky-200"/>

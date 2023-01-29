@@ -9,19 +9,19 @@ function Footer(){
     
     return(
         
-        <div className="w-full h-auto p-[23vmin] bg-blue-800 text-white flex justify-center items-center">
+        <div className="w-full h-auto p-[23vmin] bg-blue-800 text-white flex justify-center items-center text-extraSmall xlsm:text-base">
             <footer className="flex flex-col justify-center items-center gap-7">
-                <div className="flex gap-7" >
-                    <div className="nav-ft">What we do</div>
-                    <div className="nav-ft">About</div>
-                    <div className="nav-ft">Help Center</div>
-                    <div className="nav-ft">Contact</div>
+                <div className="flex gap-[3vw] xxxxsm:gap-7" >
+                    <div>What we do</div>
+                    <div>About</div>
+                    <div>Help Center</div>
+                    <div>Contact</div>
                 </div>
-                <div className="img-footer">
-                    <img src={fb_footer}/>
-                    <img src={github_footer}/>
-                    <img src={linkedin_footer}/>
-                    <img src={google_footer}/>
+                <div className="flex gap-[3vw] xxxxsm:gap-10">
+                    <img className="w-[6vw] xlsm:w-7 cursor-pointer rounded-full shadow-lg shadow-blue-900" src={fb_footer}/>
+                    <img className="w-[6vw] xlsm:w-7 cursor-pointer rounded-full shadow-lg shadow-blue-900" src={github_footer}/>
+                    <img className="w-[6vw] xlsm:w-7 cursor-pointer rounded-full shadow-lg shadow-blue-900" src={linkedin_footer}/>
+                    <img className="w-[6vw] xlsm:w-7 cursor-pointer rounded-full shadow-lg shadow-blue-900" src={google_footer}/>
                 </div>
                 <div>
                     <p>Bansdroni, Kolkata-70</p>
