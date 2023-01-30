@@ -28,7 +28,7 @@ function Footer(){
                 </div>
                 <div className="w-[70vmax] h-[1px] bg-gray-400"/>
                 <div>
-                    <p clasName="text-sm">Copyright © 2022 Shakya Sarkar Inc. All rights reserved.</p>
+                    <p>Copyright © 2022 Shakya Sarkar Inc. All rights reserved.</p>
                 </div>
             </footer> 
         </div>

@@ -59,7 +59,7 @@ function FilterBar(){
                     </div>
                 </div>
                 <div>
-                    <div className="flex gap-2" >
+                    <div className="flex flex-col xlg:flex-row gap-2" >
                         <input min="0" value={priceFilter} onChange={(e)=>{
                             setPriceFilter(e.target.value);
                         }} step="10" max="1000" type={"range"}/>

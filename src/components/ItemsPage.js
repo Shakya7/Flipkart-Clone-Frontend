@@ -93,10 +93,10 @@ const ItemsPage=()=>{
             <Categories/>
             <div className="w-full h-[2vh] bg-sky-200"/>
             <div className="flex justify-between items-center mb-5">
-                <div className="w-1/5 h-auto self-start ml-[3%] mt-2.5 rounded-md shadow-lg shadow-gray-500">
+                <div className="hidden smd:block w-1/5 h-auto self-start ml-[3%] mt-2.5 rounded-md shadow-lg shadow-gray-500">
                     <FilterBar/>
                 </div>
-                <div className="grid grid-cols-3 gap-3 mr-10 mt-2.5">
+                <div className="flex flex-wrap smd:grid smd:grid-cols-3 gap-3 smd:mr-10 p-2 smd:p-0 mt-2.5">
                 {   state.results &&
                     state.results.map((el)=>{
                         return <Card key={el.id} element={el}/>
