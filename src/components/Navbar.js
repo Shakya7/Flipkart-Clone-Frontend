@@ -11,6 +11,8 @@ import logout_logo from "../images/logout_logo.png";
 import { useNavigate } from "react-router-dom";
 import { GlobalContext } from "./GlobalContext";
 import { ProfileContext } from "./GlobalContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faUser, faCartShopping, faHeart, faLayerGroup, faXmark, faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
 
 
@@ -19,22 +21,106 @@ export const Navbar=()=>{
     const [accountPage,setAccountPage]=useContext(ProfileContext)
     const [hoverLogin,setHover]=useState("none");
     const [searchTerm,setSearchTerm]=useState("");
+
+    const [show, setShow]=useState(false);
     const navigation=useNavigate();
     useEffect(()=>{
 
     },[state.cart,hoverLogin,state.userProfile,state.showCart]);
     return(
         <div className="w-screen h-screen overflow-x-hidden">
-            <div className="bg-blue-500 w-full min-h-[3.5rem] flex justify-around sticky top-0 z-10">
+            <div className="pl-3 pt-2 block xxsm:hidden bg-blue-500">
+                <img src={logo}/>
+            </div>
+            <div className={`absolute transform-all ease-in-out duration-500 top-0 ${show?"right-0":"right-[100vw]"} border border-l-slate-500 h-full bg-stone-100 w-3/5 xxsm:w-3/6 sm:w-2/5 flex flex-col z-20 smd:hidden`}>
+                <FontAwesomeIcon onClick={()=>setShow(false)} className={`text-xl absolute top-4 right-4`} icon={faXmark}/>
+                <div onClick={()=>{
+                    if(!state.userProfile){
+                        setShow(false);
+                        navigation("/login");
+                    }
+                    else{
+                        setShow(false);
+                        setAccountPage("profile-info");
+                        navigation("/profile");
+                    }
+                }} className="flex w-full gap-[3vw] xxsm:gap-5 mt-14 justify-start items-center py-2 p-4 hover:text-white hover:bg-blue-700 text-z xxsm:text-base">
+                    <div className="w-[8vw] xxsm:w-10 h-[8vw] xxsm:h-10 flex justify-center items-center">
+                        <FontAwesomeIcon size={15} icon={faUser}/>
+                    </div>
+                    <p>{state.userProfile?"Profile":"Login"}</p>
+                </div>
+                <div onClick={()=>{
+                    if(!state.userProfile){
+                        navigation("/login")
+                        setShow(false);
+                    }
+                    else{
+                        setShow(false);
+                        navigation("/orders");
+                    }
+                }} className="flex w-full gap-[3vw] xxsm:gap-5 justify-start items-center py-2 p-4 hover:text-white hover:bg-blue-700 text-z xxsm:text-base">
+                    <div className="w-[8vw] xxsm:w-10 h-[8vw] xxsm:h-10 flex justify-center items-center">
+                        <FontAwesomeIcon size={15} icon={faLayerGroup}/>
+                    </div>
+                    <p>Orders</p>
+                    
+                </div>
+                <div onClick={()=>{
+                    if(!state.userProfile){
+                        navigation("/login")
+                        setShow(false);
+                    }
+                    else{
+                        setShow(false);
+                        setAccountPage("wishlist-info");
+                        navigation("profile/wishlist")
+                    }
+                }} className="flex w-full gap-[3vw] xxsm:gap-5 justify-start items-center py-2 p-4 hover:text-white hover:bg-blue-700 text-z xxsm:text-base">
+                    <div className="w-[8vw] xxsm:w-10 h-[8vw] xxsm:h-10 flex justify-center items-center">
+                        <FontAwesomeIcon size={15} icon={faHeart}/>
+                    </div>
+                    <p>Wishlist {state.wishlist.length?`(${state.wishlist.length})`:""}</p>
+                </div>
+                <div onClick={()=>{
+                    if(!state.userProfile){
+                        navigation("/cart")
+                        setShow(false);
+                    }
+                    else{
+                        setShow(false);
+                        navigation("/cart")
+                    }
+                }} className="flex w-full gap-[3vw] xxsm:gap-5 justify-start items-center py-2 p-4 hover:text-white hover:bg-blue-700 text-z xxsm:text-base">
+                    <div className="w-[8vw] xxsm:w-10 h-[8vw] xxsm:h-10 flex justify-center items-center">
+                        <FontAwesomeIcon size={15} icon={faCartShopping}/>
+                    </div>
+                    <p>Cart</p>
+                </div>
+                {state.userProfile?<div onClick={async e=>{
+                    dispatch({type:"logout"});
+                    await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/logout`,{
+                        withCredentials:true
+                    });
+                    setShow(false);
+                    navigation("/");
+                    }} className="flex w-full gap-[3vw] xxsm:gap-5 justify-start items-center py-2 p-4 hover:text-white hover:bg-blue-700 text-z xxsm:text-base">
+                    <div className="w-[8vw] xxsm:w-10 h-[8vw] xxsm:h-10 flex justify-center items-center">
+                        <FontAwesomeIcon className="text-red-400" size={15} icon={faRightFromBracket}/>
+                    </div>
+                    <p>Logout</p>
+                </div>:""}
+            </div>
+            <div className="bg-blue-500 w-full min-h-[3.5rem] flex justify-start xxsm:justify-between smd:justify-around sticky top-0 z-10">
                 <img onClick={(e)=>{
                     dispatch({type:"show-cart-enable"});
                     dispatch({type:"no-cat"});
                     dispatch({type:"initial"});
                     dispatch({type:"no-star"});
                     navigation("/");
-                }} className="self-center relative left-10 cursor-pointer" src={logo}/>
-                <div className="flex items-center w-[60vmax] my-1 h-[6vh] self-center relative left-[50px]">
-                    <input className="srch w-[75%] h-full self-center pl-5 outline-none" onChange={e=>setSearchTerm(e.target.value)} type="text" placeholder="Search for products..."/>
+                }} className="hidden xxsm:block self-center relative left-10 cursor-pointer" src={logo}/>
+                <div className="flex items-center justify-start xxsm:justify-center w-full xxsm:w-[60vmax] pl-3 xxsm:pl-0 my-1 h-[6vh] self-center smd:relative smd:left-[50px]">
+                    <input className="srch w-[75%] h-full self-start xxsm:self-center pl-5 outline-none rounded-l-sm text-z xxxsm:text-base" onChange={e=>setSearchTerm(e.target.value)} type="text" placeholder="Search for products..."/>
                     <div onClick={
                         async e=>{
                             dispatch({type:"search"});
@@ -43,11 +129,12 @@ export const Navbar=()=>{
                             document.querySelector(".srch").value="";
                             navigation("/");
                         }
-                    } className="w-[5%] h-full flex justify-center items-center bg-white cursor-pointer">
+                    } className="w-[5%] h-full flex justify-center items-center bg-white rounded-r-sm cursor-pointer">
                         <img className="w-5" src={search_icon}/>
                     </div>
                 </div>
-                <div className="flex items-center">
+                <FontAwesomeIcon onClick={()=>setShow(true)} className="place-self-center pr-1.5 smd:hidden text-xs xxxxsm:text-base" color="white" size={10} icon={faBars}/>
+                <div className="hidden smd:flex items-center">
                     {
                         !state.userProfile?
                         <div onMouseOverCapture={()=>setHover("flex")} className="flex flex-col justify-center items-center font-bold cursor-pointer w-[70px] bg-white text-blue-500 relative left-[10px] px-1.5 py-1 rounded-sm text-center">
