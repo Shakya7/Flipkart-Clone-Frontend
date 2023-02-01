@@ -9,7 +9,7 @@ function DropDown(props){
         //DO something
     },[props.show])
     return(
-        <div onMouseEnter={(e)=>props.pass("flex")} onMouseLeave={(e)=>props.pass("none")} style={{display:props.show}} className={`flex-col absolute left-0 top-[112%] w-[15vmax] z-2`}>  
+        <div onMouseEnter={(e)=>props.pass("flex")} onMouseLeave={(e)=>props.pass("none")} style={{display:props.show}} className={`flex-col absolute left-0 top-[112%] w-[15vmax] border border-gray-700 z-2`}>  
         {
             props.items.map((el,i)=>{
                 return(
