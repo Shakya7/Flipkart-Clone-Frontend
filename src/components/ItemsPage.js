@@ -94,17 +94,18 @@ const ItemsPage=()=>{
             <div className="w-full h-[2vh] bg-sky-200"/>
             <div className="flex justify-between items-center mb-5">
                 <div className="hidden smd:block w-1/5 h-auto self-start ml-[3%] mt-2.5 rounded-md shadow-lg shadow-gray-500">
-                    <FilterBar/>
+                    <FilterBar mobile={false}/>
                 </div>
                 <div className="flex flex-wrap smd:grid smd:grid-cols-3 gap-3 smd:mr-10 p-2 smd:p-0 mt-2.5">
-                {   state.results &&
-                    state.results.map((el)=>{
-                        return <Card key={el.id} element={el}/>
-                    })
-                }
-                {
-                    state.results && state.results.length===0?"Oops! No products found...":""
-                }
+                    <div className="block smd:hidden w-full"><FilterBar mobile={true}/></div>
+                    {   state.results &&
+                        state.results.map((el)=>{
+                            return <Card key={el.id} element={el}/>
+                        })
+                    }
+                    {
+                        state.results && state.results.length===0?"Oops! No products found...":""
+                    }
                 </div> 
             </div>
             <Footer/>

@@ -3,7 +3,7 @@ import { GlobalContext } from "./GlobalContext";
 import axios from "axios";
 
 
-function FilterBar(){
+function FilterBar(props){
     const {state,dispatch}=useContext(GlobalContext);
     const [priceFilter,setPriceFilter]=useState(500);
     async function dispatchClearFilter(){
@@ -141,7 +141,19 @@ function FilterBar(){
         }   
     }
 
+    function dispatchCasesAutomatic(event){
+        if(event==="four")
+            dispatch4Star();
+        else if(event==="three")
+            dispatch3Star();
+        else if(event==="two")
+            dispatch2Star();
+        else
+            dispatch1Star();
+    }
+
     return(
+        !props.mobile?
         <div className="bg-blue-900 flex flex-col rounded-md shadow-lg shadow-gray-500">
             <div className="p-5 text-xl text-white flex justify-between items-center">
                 <p>Filters</p>
@@ -194,6 +206,49 @@ function FilterBar(){
                         <input checked={state.filterChecked==="1-star"} type="radio" name="rating" onChange={dispatch1Star}/>
                         <label className="text-base m-2.5">1★ & above</label>
                     </div>
+                </div>
+            </div>
+        </div>:
+        <div className="block text-extraSmall md:text-base smd:hidden w-full">
+            <div className="flex justify-between items-center mb-1">
+                <b>Filters:</b>
+                <div onClick={dispatchClearFilter} className="w-auto bg-red-500 px-1.5 rounded-md shadow-lg hover:shadow-gray-500 cursor-pointer transition-colors ease-in-out duration-500 text-white hover:bg-white hover:text-black">
+                    CLEAR
+                </div>
+            </div>
+            <div className="flex px-2 flex-col xxxxsm:flex-row xxxxsm:flex-wrap bg-white border border-gray-800 rounded-md items-center gap-3 py-3 border-dashed">
+                <div className="border border-gray-400 self-start rounded-sm p-1.5">
+                    <div className="flex justify-center gap-1">
+                        <p>Price: ₹</p>
+                        <input value={priceFilter} onChange={(e)=>priceFilterInputSetup(e)} className="bg-gray-300 rounded-sm px-1.5" placeholder="Type in your filtered amount..." type="number"/>
+                    </div>
+                    <input value={priceFilter} onChange={(e)=>priceFilterInputSetup(e)} min="0" className="w-10/12 xxxxsm:w-auto" step="1" max="1000" type={"range"}/>
+                    <div onClick={searchPricedFilter} className="flex gap-3">
+                        <button className="cursor-pointer bg-black px-1.5 text-white rounded-md">Search</button>
+                    </div>
+                </div>
+                
+                <div className="flex flex-col self-start p-1">
+                    <label className="text-extraSmall md:text-base">Price: </label>
+                    <div className="flex gap-1 justify-center items-center">   
+                        <input onChange={e=>sortByFilter(e)} type="radio" value="price-asc" checked={state.category==="price-asc"} name="price-sort-1"/>
+                        <label className="text-extraSmall md:text-base">Low to High</label>
+                    </div>
+                    <div className="flex gap-1 justify-center items-center">
+                        <input onChange={e=>sortByFilter(e)} type="radio" value="price-desc" checked={state.category==="price-desc"} name="price-sort-1"/>
+                        <label className="text-extraSmall md:text-base">High to Low</label>
+                    </div>
+                </div>
+                <div className="flex flex-col self-start p-1">
+                    <label className="text-extraSmall md:text-base">Rating: </label>
+                    <select onChange={e=>dispatchCasesAutomatic(e.target.value)}>
+                        <option selected>--No rating--</option>
+                        <option selected={state.filterChecked==="4-star"} value="four" >4+ star</option>
+                        <option selected={state.filterChecked==="3-star"} value="three">3+ star</option>
+                        <option selected={state.filterChecked==="2-star"} value="two">2+ star</option>
+                        <option selected={state.filterChecked==="1-star"} value="one">1+ star</option>
+                    </select>
+
                 </div>
             </div>
         </div>

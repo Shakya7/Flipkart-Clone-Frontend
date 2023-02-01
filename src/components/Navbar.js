@@ -32,6 +32,8 @@ export const Navbar=()=>{
             <div className="pl-3 pt-2 block xxsm:hidden bg-blue-500">
                 <img src={logo}/>
             </div>
+
+            
             <div className={`absolute transform-all ease-in-out duration-500 top-0 ${show?"right-0":"right-[100vw]"} border border-l-slate-500 h-full bg-stone-100 w-3/5 xxsm:w-3/6 sm:w-2/5 flex flex-col z-20 smd:hidden`}>
                 <FontAwesomeIcon onClick={()=>setShow(false)} className={`text-xl absolute top-4 right-4`} icon={faXmark}/>
                 <div onClick={()=>{
@@ -118,7 +120,7 @@ export const Navbar=()=>{
                     dispatch({type:"initial"});
                     dispatch({type:"no-star"});
                     navigation("/");
-                }} className="hidden xxsm:block self-center relative left-10 cursor-pointer" src={logo}/>
+                }} className="hidden xxsm:block self-center relative left-3 smd:left-10 cursor-pointer" src={logo}/>
                 <div className="flex items-center justify-start xxsm:justify-center w-full xxsm:w-[60vmax] pl-3 xxsm:pl-0 my-1 h-[6vh] self-center smd:relative smd:left-[50px]">
                     <input className="srch w-[75%] h-full self-start xxsm:self-center pl-5 outline-none rounded-l-sm text-z xxxsm:text-base" onChange={e=>setSearchTerm(e.target.value)} type="text" placeholder="Search for products..."/>
                     <div onClick={
