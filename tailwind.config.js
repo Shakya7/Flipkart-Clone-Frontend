@@ -10,8 +10,10 @@ module.exports = {
         "smd":"900px",
         "xlsm": "550px",
         "xxsm":"450px",
+        "cartsm":"370px",
         "xxxsm":"350px",
-        "xxxxsm":"220px"
+        "xxxxsm":"220px",
+        "xxxxxsm":"150px"
       },
       width:{
         extraSmall:"2.5vw"

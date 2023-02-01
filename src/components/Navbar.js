@@ -28,7 +28,7 @@ export const Navbar=()=>{
 
     },[state.cart,hoverLogin,state.userProfile,state.showCart]);
     return(
-        <div className="w-screen h-screen overflow-x-hidden">
+        <div className="w-screen bg-blue-800 h-screen overflow-x-hidden">
             <div className="pl-3 pt-2 block xxsm:hidden bg-blue-500">
                 <img src={logo}/>
             </div>

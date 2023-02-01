@@ -67,7 +67,7 @@ const ItemsPage=()=>{
     });
 
     useLayoutEffect(()=>{
-        console.log("<--- HOMEPAGE --->");
+        
     },[isLoading])
 
     useEffect(useCallback(()=>{
