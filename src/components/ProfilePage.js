@@ -201,7 +201,32 @@ const ProfilePage=(props)=>{
                     </div>
                 </div>
                 <div className="flex flex-col w-11/12 text-extraSmall xxsm:text-base smd:w-[65%] h-auto shadow-lg shadow-gray-500">
-                    <div className="block smd:hidden">Hello</div>
+                    <div className="flex flex-wrap py-1.5 px-2 smd:hidden text-white rounded-sm mb-2 bg-blue-600">
+                        Hey! {state.userProfile?state.userProfile.name:""}
+                    </div>
+                    <div className="flex bg-white p-2 flex-wrap w-full smd:hidden gap-3">
+                        <div onClick={()=>{
+                            setAccountPage("profile-info");
+                            navigation("/profile");
+                        }} className="px-1.5 py-1 border border-blue-600 rounded-sm">Profile</div>
+                        <div onClick={e=>navigation("/orders")} className="px-1.5 py-1 border border-blue-600 rounded-sm">Orders</div>
+                        <div onClick={e=>{
+                            setAccountPage("wishlist-info");
+                            navigation("wishlist");
+                            }} className="px-1.5 py-1 border border-blue-600 rounded-sm">Wishlist</div>
+                        <div onClick={()=>{
+                            setAccountPage("addresses-info");
+                            navigation("/profile/addresses");
+                            }} className="px-1.5 py-1 border border-blue-600 rounded-sm">Addresses</div>
+                        <div onClick={async e=>{
+                                dispatch({type:"logout"});
+                                await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/logout`,{
+                                    withCredentials:true
+                                });
+                                navigation("/");
+                            }} className="px-1.5 py-1 border text-red-600 border-red-600 rounded-full">Logout</div>
+
+                    </div>
                     {accountPage==="profile-info"?
                     <form className="min-w-[65%] h-auto bg-white flex p-[4%] flex-col gap-10 xxxsm:gap-[80px]">
                         <div className="flex flex-col gap-[10px]"> 
