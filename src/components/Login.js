@@ -51,19 +51,20 @@ function Login(props){
     return(
         <div>
             <Categories/>
-            <div className="flex justify-center items-center w-full h-auto bg-white p-12">
-                <div className="flex h-auto shadow-lg shadow-gray-500 w-[53vmax]">
-                    <div className="w-[23vmax] h-auto bg-blue-700 p-5 flex flex-col">
-                        <div className="text-white text-3xl">Login</div>
+            <div className="flex justify-center flex-col xlsm:flex-row items-center text-extraSmall md:text-base w-full h-auto bg-white p-3 xxxxsm:p-12">
+                <p className="block xlsm:hidden text-y xlsm:text-xl">Login</p>
+                <div className="flex h-auto shadow-lg shadow-gray-500 w-11/12 md:w-[53vmax]">
+                    <div className="hidden w-0 xlsm:flex xlsm:w-4/12 md:w-[23vmax] h-auto bg-blue-700 p-5 flex-col">
+                        <div className="text-white text-y md:text-3xl">Login</div>
                         <br/>
                         <br/>
-                        <div className="text-base text-white">Get access to your Orders, Wishlist and Recommendations</div>
+                        <div className="text-extraSmall md:text-base text-white">Get access to your Orders, Wishlist and Recommendations</div>
                         <div className="flex justify-center mt-[50%]">
                             <img className="w-auto" src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/login_img_c4a81e.png"/>
                         </div>
                     </div>
-                    <div className="w-[30vmax] h-auto bg-white flex flex-col p-6">
-                        <form className="flex flex-col">
+                    <div className="w-full xlsm:w-3/5 md:w-[30vmax] h-auto bg-white flex flex-col p-6">
+                        <form className="flex flex-col w-full">
                             <input onFocus={e=>{
                                 if(failure)
                                 {
@@ -74,7 +75,7 @@ function Login(props){
                             }} value={inputState.email} onChange={e=>setInputState({
                                 ...inputState,
                                 email:e.target.value
-                            })} placeholder="Enter email/ phone number" className="text-base p-5 outline-none border border-gray-500 focus:border-blue-500" type="text"/>
+                            })} placeholder="Enter email/ phone number" className="text-extraSmall w-full md:w-auto md:text-base px-3 py-2 xlsm:p-5 outline-none border border-gray-500 focus:border-blue-500" type="text"/>
                             <br/>
                             <input onFocus={e=>{
                                 if(failure)
@@ -86,7 +87,7 @@ function Login(props){
                             }} value={inputState.password} onChange={e=>setInputState({
                                 ...inputState,
                                 password:e.target.value
-                            })} placeholder="Enter password" className="text-base p-5 outline-none border border-gray-500 focus:border-blue-500" type="password"/>
+                            })} placeholder="Enter password" className="text-extraSmall md:text-base px-3 py-2 xlsm:p-5 outline-none border border-gray-500 focus:border-blue-500" type="password"/>
                             <br/>
                             {failure?<p className="text-red-600 text-center">Login failed. Make sure you are entering correct email address and password</p>:""}
                             
@@ -111,9 +112,9 @@ function Login(props){
                                         }
                                     }
                                 }>
-                                    <div className="w-3/5 bg-orange-500 p-5 text-center text-white cursor-pointer">
+                                    <div className="w-auto xlsm:w-3/5 bg-orange-500 px-5 py-2 xlsm:p-5 text-center text-white cursor-pointer">
                                         {!isLoading?"Login":
-                                        <div className="flex gap-5 justify-center items-center">
+                                        <div className="flex gap-1 xxxxsm:gap-5 justify-center items-center">
                                             <p>Logging in...</p>
                                             <SaveSpinner/>
                                          </div>

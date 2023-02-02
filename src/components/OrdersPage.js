@@ -81,7 +81,7 @@ function OrdersPage(){
                         <input className="srch w-4/5 rounded-l-md pl-[2%] border  border-gray-400" onChange={e=>setSearchInp(e.target.value)} type="text" placeholder="Search orders by destination address keywords..."/>
                         <div className="bg-blue-500 flex justify-evenly items-center p-1.5 text-white font-bold text-sm w-1/5 gap-0 md:gap-5 rounded-r-md cursor-pointer text-extraSmall md:text-base">
                             <img className="hidden md:block w-5" src={search_icon}/>
-                            <p onClick={async()=>{
+                            <p className="text-extraSmall md:text-base" onClick={async()=>{
                                 let data=await loadData();
                                 dispatch({type:"search-order-by-address",payload:data,term:searchInp});
                             }}>Search</p>
