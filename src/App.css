@@ -97,7 +97,7 @@ label{
 }
 
 .edit{
-  width:5vmax;
+  width:auto;
   min-height:10vmin;
   padding:4px;
   cursor:pointer;

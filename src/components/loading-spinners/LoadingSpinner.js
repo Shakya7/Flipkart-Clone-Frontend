@@ -8,7 +8,7 @@ function  LoadingSpinner(){
                     <div></div>
                     <div></div>
                 </div>
-                <div className="text-black">Loading...</div>
+                <div className="text-stone-900 font-bold">Loading...</div>
             </div>
         </div>
     )

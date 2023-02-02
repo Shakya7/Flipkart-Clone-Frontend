@@ -29,7 +29,13 @@ export const Navbar=()=>{
     },[state.cart,hoverLogin,state.userProfile,state.showCart]);
     return(
         <div className="w-screen bg-blue-800 h-screen overflow-x-hidden">
-            <div className="pl-3 pt-2 block xxsm:hidden bg-blue-500">
+            <div onClick={(e)=>{
+                    dispatch({type:"show-cart-enable"});
+                    dispatch({type:"no-cat"});
+                    dispatch({type:"initial"});
+                    dispatch({type:"no-star"});
+                    navigation("/");
+                }}  className="pl-3 pt-2 block xxsm:hidden bg-blue-500">
                 <img src={logo}/>
             </div>
 
