@@ -17,13 +17,13 @@ export function ChangePassModal(props){
     },[failure,isLoading]);
     return(
         <div className="fixed top-0 left-0 w-screen h-screen backdrop-blur-sm z-10 flex justify-center items-center">
-            <div className="w-1/2 h-[80vh] bg-white border border-gray-700 rounded-md flex justify-around pt-14 p-4 relative">
+            <div className="w-10/12 md:w-1/2 min-h-[80vh] text-extraSmall sm:text-base bg-white border border-gray-700 rounded-md flex justify-around pt-14 p-4 relative">
                 <div onClick={e=>props.closeModal(false)} className="absolute top-3 right-3 text-xl cursor-pointer">X</div>
                 <div className="w-1/3 break-words">
                     <p><b>Your new password must:</b></p>
                     <br/>
                     <div>
-                        <ul className="text-sm">
+                        <ul className="text-extraSmall sm:text-sm">
                             <li>Be at least 4 characters in length</li>
                             <br/>
                             <li>Not be same as your current password</li>
@@ -43,7 +43,7 @@ export function ChangePassModal(props){
                                 }
                                 else
                                     setFailure(false);
-                            }} className="w-[25vmax] h-[10vmin] border border-gray-300 pl-2.5" type="password" placeholder="Type current password" onChange={e=>{
+                            }} className="w-full md:w-[25vmax] h-[10vmin] border border-gray-300 pl-2.5" type="password" placeholder="Type current password" onChange={e=>{
                                 setPasswordFields({
                                     ...passwordFields,
                                     currPassword:e.target.value
@@ -58,7 +58,7 @@ export function ChangePassModal(props){
                                 }
                                 else
                                     setFailure(false);
-                            }} className="w-[25vmax] h-[10vmin] border border-gray-300 pl-2.5" type="password" placeholder="Type new password" onChange={e=>{
+                            }} className="w-full md:w-[25vmax] h-[10vmin] border border-gray-300 pl-2.5" type="password" placeholder="Type new password" onChange={e=>{
                                 setPasswordFields({
                                     ...passwordFields,
                                     newPassword:e.target.value
@@ -73,14 +73,14 @@ export function ChangePassModal(props){
                                 }
                                 else
                                     setFailure(false);
-                            }} className="w-[25vmax] h-[10vmin] border border-gray-300 pl-2.5" type="password" placeholder="Retype new password" onChange={e=>{
+                            }} className="w-full md:w-[25vmax] h-[10vmin] border border-gray-300 pl-2.5" type="password" placeholder="Retype new password" onChange={e=>{
                                 setPasswordFields({
                                     ...passwordFields,
                                     confirmNewPassword:e.target.value
                                 })
                             }}/>
                         </div>
-                        {failure?<p className="text-red text-center">Password changed failed, make sure you are entering correct password and following password guidelines</p>:""}
+                        {failure?<p className="text-red-600 text-center">Password changed failed, make sure you are entering correct password and following password guidelines</p>:""}
                         <div onClick={async e=>{
                             try{
                             setIsLoading(true);
@@ -97,10 +97,9 @@ export function ChangePassModal(props){
                                 setFailure(true);
                             }
 
-                        }} className="w-[25vmax] h-[7vmin] bg-blue-600 flex items-center justify-center text-white font-bold cursor-pointer">{!isLoading?"CHANGE PASSWORD":
+                        }} className="w-auto md:w-[25vmax] px-2 h-[7vmin] bg-blue-600 flex items-center justify-center text-white font-bold cursor-pointer">{!isLoading?"CHANGE PASSWORD":
                         <div className="flex gap-4 justify-center items-center">
                             <p>Changing PASSWORD...</p>
-                            <SaveSpinner/>
                         </div>
                         }</div>
                     </div>
