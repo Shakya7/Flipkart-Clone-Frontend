@@ -86,7 +86,6 @@ const ProfilePage=(props)=>{
 
     
     useEffect(()=>{
-
         if(showModal)
             body.style.overflow="hidden";
         else{    
