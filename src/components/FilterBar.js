@@ -184,6 +184,7 @@ function FilterBar(props){
                         <label>Price: ₹</label>
                         <input value={priceFilter} onChange={(e)=>priceFilterInputSetup(e)} type="number" className="text-black w-16 text-center rounded-sm"/>
                     </div>
+                    <p className="text-xs mt-2">**Filter products within this price range</p>
                 </div>
             </div>
             <div className="h-[1px] bg-gray-400"/>
@@ -226,6 +227,7 @@ function FilterBar(props){
                     <div onClick={searchPricedFilter} className="flex gap-3">
                         <button className="cursor-pointer bg-black px-1.5 text-white rounded-md">Search</button>
                     </div>
+                    <p className="text-extraSmall xlsm:text-xs mt-2 text-blue-600">**Filter products within this price range</p>
                 </div>
                 
                 <div className="flex flex-col self-start p-1">
