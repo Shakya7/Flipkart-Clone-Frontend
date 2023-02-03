@@ -6,8 +6,6 @@ import { ProfileContext } from "./GlobalContext";
 
 
 function Addresses(props){
-
-    const [accountPage,setAccountPage]=useContext(ProfileContext)
     const [editBttnShow,setEditBttnShow]=useState(false);
     const [editFieldShow, setEditFieldShow]=useState(false);
     const [updateAddres,setUpdateAddress]=useState(props.element);
@@ -47,7 +45,6 @@ function Addresses(props){
                         setEditBttnShow(false);
                         await dispatch({type:"delete-address",payload:element});
                         await dispatch({type:"add-address-to-DB"});
-                        setAccountPage("addresses-info");
                         navigation("/profile/addresses");
                         window.location.reload(true);
                     }}>Delete</div>    
