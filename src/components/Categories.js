@@ -4,7 +4,7 @@ import cat_3 from "../images/jewelery_cat.jpg";
 import { useNavigate } from "react-router-dom";
 import { GlobalContext } from "./GlobalContext";
 import { useContext, useState } from "react";
-import DropDown from "./DropDown_NavBar";
+import { useRef } from "react";
 
 
 const Categories=()=>{
@@ -13,6 +13,17 @@ const Categories=()=>{
     const categories=["Fashion", "Electronics", "Jewelery"];
     const navigation=useNavigate();
 
+    const [showFashion, setShowFashion]=useState(false);
+
+    const fashionRef=useRef(null);
+
+    const closeFashionMenus = (e)=>{
+        if(fashionRef.current && showFashion && !fashionRef.current.contains(e.target)){
+            setShowFashion(false);
+        }
+    }
+    document.addEventListener('mousedown',closeFashionMenus);
+
 
     /*onMouseOverCapture={(e)=>setCat1("flex")} onMouseOutCapture={(e)=>setCat1("none")}*/
 
@@ -20,16 +31,34 @@ const Categories=()=>{
         <div className="w-full h-auto bg-white">
                 <div className="flex justify-around p-2">
                     <div className="fashion">
-                        <div onMouseEnter={(e)=>setCat1("flex")} onClick={(e)=>setCat1("none")} className="flex flex-col justify-between">
-                            <div onClick={(e)=>{
-                                //dispatch({type:"women's clothing"});
-                                //navigation("/");
+                        <div className="flex flex-col justify-between">
+                            <div ref={fashionRef} onClick={(e)=>{
+                                setShowFashion((prev)=>!prev);
 
                             }}>
                                 <img className="w-[15vmin] h-[10vmin]" src={cat_1}/>
                                 <p className="text-extraSmall xlsm:text-base text-center">{categories[0]}</p>
                             </div>
-                            <DropDown show={cat1} pass={setCat1} items={["Women's clothing","Men's clothing"]}/>
+                            {
+                            showFashion && 
+                            <div className="flex-col absolute left-0 top-[112%] w-[15vmax] border border-gray-700 z-2" ref={fashionRef}>
+                                <p className="bg-white p-1.5 hover:bg-sky-400 text-extraSmall xlsm:text-base" onClick={()=>{
+                                    dispatch({type:"wc"});
+                                    dispatch({type:"no-star"});
+                                    dispatch({type:"women's clothing"});
+                                    navigation("/");
+                                    setShowFashion(false);
+                                }}>Women</p>
+                                <hr/>
+                                <p className="bg-white p-1.5 hover:bg-sky-400 text-extraSmall xlsm:text-base" onClick={()=>{
+                                    dispatch({type:"mc"});
+                                    dispatch({type:"no-star"});
+                                    dispatch({type:"men's clothing"});
+                                    navigation("/");
+                                    setShowFashion(false);
+                                }}>Men</p>
+                            </div>
+                            }
                         </div>    
                     </div>
                     <div className="fashion" onClick={(e)=>{

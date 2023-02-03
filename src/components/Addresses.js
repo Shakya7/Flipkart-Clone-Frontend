@@ -1,38 +1,53 @@
-import { useState, useContext,useEffect } from "react";
+import { useState, useContext,useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import hamburger_dots from "../images/hamburger_three_dots.png";
 import { GlobalContext } from "./GlobalContext";
+import { ProfileContext } from "./GlobalContext";
 
 
 function Addresses(props){
-    const [editBttnShow,setEditBttnShow]=useState(true);
+
+    const [accountPage,setAccountPage]=useContext(ProfileContext)
+    const [editBttnShow,setEditBttnShow]=useState(false);
     const [editFieldShow, setEditFieldShow]=useState(false);
     const [updateAddres,setUpdateAddress]=useState(props.element);
     const {element}=props
     const {state,dispatch}=useContext(GlobalContext);
     //const {newAddress, setAddAddressBttn}=useContext(ProfileContext);
     const navigation=useNavigate();
+    const editRef=useRef(null);
+
+    const closeEditFields=(e)=>{
+        if(editRef.current && editBttnShow && !editRef.current.contains(e.target)){
+            setEditBttnShow(false);
+        }
+    }
+
 
     useEffect(()=>{
     },[updateAddres]);
+
+    document.addEventListener("mousedown",closeEditFields);
 
     return(
         <div className="w-full h-auto p-4 border border-gray-400">
             <div className="w-full flex justify-between h-auto">
                 {element}
-                {editBttnShow
-                ?<div className="dots cursor-pointer" onMouseOverCapture={()=>setEditBttnShow((prev)=>!prev)}>
+                {!editBttnShow && <div ref={editRef} className="dots cursor-pointer" onClick={()=>setEditBttnShow(true)}>
                     <img className="w-[5vw] xxxxsm:w-5" src={hamburger_dots}/>
-                </div>
-                :<div className="edit" onMouseLeave={()=>setEditBttnShow((prev)=>!prev)}>
+                </div>}
+                {editBttnShow && <div ref={editRef} className="edit">
                     <div onClick={e=>{
                     
                         setEditFieldShow(true);
-                        setEditBttnShow((prev)=>!prev);
+                        setEditBttnShow(false);
                         }}>Edit</div>
+                    <hr/>
                     <div onClick={async e=>{
+                        setEditBttnShow(false);
                         await dispatch({type:"delete-address",payload:element});
                         await dispatch({type:"add-address-to-DB"});
+                        setAccountPage("addresses-info");
                         navigation("/profile/addresses");
                         window.location.reload(true);
                     }}>Delete</div>    
