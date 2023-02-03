@@ -44,6 +44,7 @@ export const SingleItemPage=(props)=>{
                             if(state.isLoggedIn){
                                 await dispatch({type:"add-to-wishlist",payload:location.state});
                                 await dispatch({type:"add-wishlist-to-DB"});
+                                
                             }
                             else{
                                 navigation("/login");

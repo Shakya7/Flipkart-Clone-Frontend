@@ -183,7 +183,7 @@ export const Navbar=()=>{
                         <div onMouseOverCapture={()=>setHover("flex")} className="flex flex-col justify-center items-center font-bold cursor-pointer w-[70px] bg-white text-blue-500 relative left-[10px] px-1.5 py-1 rounded-sm text-center">
                             <p className="w-auto h-auto p-0.5 font-bold">
                                 {state.userProfile?
-                                state.userProfile.name.split(" ")[0].toUpperCase():
+                                "PROFILE":
                                 "LOGIN"}
                             </p>
                             <div onMouseOutCapture={()=>setHover("none")} style={{display:hoverLogin,position:"absolute", width:"40vmin",backgroundColor:"grey",top:"7vh",alignItems:"center",flexDirection:"column",boxShadow:"5px 0 5px -5px grey,0 5px 5px -5px grey, -5px 0 5px -5px grey",borderRadius:"4px 4px 4px 4px"}}>

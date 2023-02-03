@@ -77,9 +77,10 @@ export default function CartProducts(){
                                             dispatch({type:"add-quantity-input",qty:e.target.value,payload:el.id});
                                             dispatch({type:"add-to-cart-DB"});
                                         }}/>
-                                        <div className="qnt-bttn w-[10vw] cartsm:w-9 h-[10vw] cartsm:h-9" onClick={()=>{
+                                        <div className={`${el.quantity===10?"qnt-bttn abc":"qnt-bttn"} w-[10vw] cartsm:w-9 h-[10vw] cartsm:h-9`} onClick={()=>{
                                             dispatch({type:"add-quantity",payload:el.id});
                                             dispatch({type:"add-to-cart-DB"});
+
                                         }}>+</div>
                                     </div>
                                     <button className="px-2.5 py-1 bg-red-500 text-white rounded-md cursor-pointer shadow-lg shadow-gray-500" onClick={(e)=>{

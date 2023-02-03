@@ -162,7 +162,7 @@ const reducerF=(currState, action)=>{
                 cartProducts:[...currState.cartProducts,{...action.payload,quantity: 1}]
             }
         case "add-to-cart-DB":
-            axios.patch(`${process.env.REACT_APP_BACKEND_URL}/users/add-to-cart`,{cart:[...currState.cartProducts]},{withCredentials:true}).then(
+            axios.patch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/add-to-cart`,{cart:[...currState.cartProducts]},{withCredentials:true}).then(
             (res)=>{}).catch((err)=>{
             
             })
@@ -274,6 +274,7 @@ const reducerF=(currState, action)=>{
             {wishlist:[...currState.wishlist]},{withCredentials:true}).then(
             (res)=>{}).catch((err)=>{
     
+
             })
             return currState;
 
