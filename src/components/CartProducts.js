@@ -70,8 +70,10 @@ export default function CartProducts(){
                                 <div className="flex flex-col cartsm:flex-row justify-start gap-3 cartsm:gap-10">
                                     <div className="flex flex-col xxxxxsm:flex-row justify-start items-center gap-1">
                                         <div className={`${el.quantity===1?"qnt-bttn abc":"qnt-bttn"} w-[10vw] cartsm:w-9 h-[10vw] cartsm:h-9`} onClick={()=>{
-                                            dispatch({type:"subtract-quantity",payload:el.id});
-                                            dispatch({type:"add-to-cart-DB"});
+                                            if(el.quantity>=1){
+                                                dispatch({type:"subtract-quantity",payload:el.id});
+                                                dispatch({type:"add-to-cart-DB"});
+                                            }
                                         }}>-</div>
                                         <input className="input-fields w-full xxxxxsm:w-12 border border-gray-200 outline-none h-auto text-center" type="number" inputMode="numeric" min={1} max={10} value={el.quantity} onChange={(e)=>{
                                             if(e.target.value>=1 && e.target.value<=10){
@@ -80,9 +82,10 @@ export default function CartProducts(){
                                             }
                                         }}/>
                                         <div className={`${el.quantity===10?"qnt-bttn abc":"qnt-bttn"} w-[10vw] cartsm:w-9 h-[10vw] cartsm:h-9`} onClick={()=>{
-                                            dispatch({type:"add-quantity",payload:el.id});
-                                            dispatch({type:"add-to-cart-DB"});
-
+                                            if(el.quantity<=10){
+                                                dispatch({type:"add-quantity",payload:el.id});
+                                                dispatch({type:"add-to-cart-DB"});
+                                            }
                                         }}>+</div>
                                     </div>
                                     <button className="px-2.5 py-1 bg-red-500 text-white rounded-md cursor-pointer shadow-lg shadow-gray-500" onClick={(e)=>{
