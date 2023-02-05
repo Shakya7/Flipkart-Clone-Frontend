@@ -73,9 +73,11 @@ export default function CartProducts(){
                                             dispatch({type:"subtract-quantity",payload:el.id});
                                             dispatch({type:"add-to-cart-DB"});
                                         }}>-</div>
-                                        <input className="input-fields w-full xxxxxsm:w-12 border border-gray-200 outline-none h-auto text-center" type="number" min={0} max={10} value={el.quantity} onChange={(e)=>{
-                                            dispatch({type:"add-quantity-input",qty:e.target.value,payload:el.id});
-                                            dispatch({type:"add-to-cart-DB"});
+                                        <input className="input-fields w-full xxxxxsm:w-12 border border-gray-200 outline-none h-auto text-center" type="number" inputMode="numeric" min={1} max={10} value={el.quantity} onChange={(e)=>{
+                                            if(e.target.value>=1 && e.target.value<=10){
+                                                dispatch({type:"add-quantity-input",qty:e.target.value,payload:el.id});
+                                                dispatch({type:"add-to-cart-DB"});
+                                            }
                                         }}/>
                                         <div className={`${el.quantity===10?"qnt-bttn abc":"qnt-bttn"} w-[10vw] cartsm:w-9 h-[10vw] cartsm:h-9`} onClick={()=>{
                                             dispatch({type:"add-quantity",payload:el.id});
