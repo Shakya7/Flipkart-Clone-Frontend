@@ -46,14 +46,14 @@ function OrdersPage(){
     return(
         <div>
             <Categories/>
-            <div className="w-full min-h-auto bg-white flex gap-2 items-start justify-evenly py-5">
-                <div className="hidden lg:block w-1/5 bg-blue-900 h-52 text-white rounded-md relative shadow-lg shadow-gray-500">
+            <div className="w-full h-auto bg-white flex gap-2 items-start justify-evenly py-5">
+                <div className="hidden lg:block w-1/5 flex flex-col bg-blue-900 h-auto min-h-52 text-white rounded-md relative shadow-lg shadow-gray-500">
                     <div className="flex justify-center items-center flex-col mt-[5%] gap-5">
                         <p>Filter effects</p>
                         <div className="flex flex-col gap-4">
-                            <div className="flex gap-3">
+                            <div className="flex flex-col xxlg:flex-row gap-3">
                                 <label>Price: ₹</label>
-                                <input className="text-center w-32 text-black w-min" value={priceFilter} onChange={e=>setPriceFilter(e.target.value)} type="number"/>
+                                <input className="text-center w-32 text-black w-full" value={priceFilter} onChange={e=>setPriceFilter(e.target.value)} type="number"/>
                             </div>
                             <div className="flex gap-3 flex-col xlg:flex-row">
                                 <input min="0" value={priceFilter} onChange={(e)=>{
@@ -67,16 +67,16 @@ function OrdersPage(){
                                 }}>Search</button>
                             </div>
                         </div>
+                        <div onClick={async e=>{
+                            let data=await loadData();
+                            window.location.reload();
+                            await dispatch({type:"load-user-data",payload:data});
+                            setSearchInp("");
+                            document.querySelector(".srch").value="";
+                        }} className="text-sm w-[20%] text-center mb-2 bg-red-500 px-2.5 py-1 rounded-md shadow-lg shadow-blue-500 cursor-pointer transition-colors ease-in-out duration-500 hover:bg-white hover:text-black">Clear</div>
                     </div>
-                    <div onClick={async e=>{
-                        let data=await loadData();
-                        window.location.reload();
-                        await dispatch({type:"load-user-data",payload:data});
-                        setSearchInp("");
-                        document.querySelector(".srch").value="";
-                    }} className="absolute bottom-5 right-5 text-sm w-auto bg-red-500 px-2.5 py-1 rounded-md shadow-lg shadow-blue-500 cursor-pointer transition-colors ease-in-out duration-500 hover:bg-white hover:text-black">Clear</div>
                 </div>
-                <div className="w-11/12 lg:w-2/3 bg-white flex flex-col h-auto gap-5">
+                <div className="w-11/12 lg:w-2/3 bg-white flex flex-col min-h-auto gap-5">
                     <div className="flex text-extraSmall md:text-base">
                         <input className="srch w-4/5 rounded-l-md pl-[2%] border  border-gray-400" onChange={e=>setSearchInp(e.target.value)} type="text" placeholder="Search orders by destination address keywords..."/>
                         <div className="bg-blue-500 flex justify-evenly items-center p-1.5 text-white font-bold text-sm w-1/5 gap-0 md:gap-5 rounded-r-md cursor-pointer text-extraSmall md:text-base">
