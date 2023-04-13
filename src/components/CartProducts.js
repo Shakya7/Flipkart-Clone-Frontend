@@ -43,7 +43,7 @@ export default function CartProducts(){
                         dispatch({type:"address-selected",payload:e.target.value});
                     }} value={state.billingAddress}>
                     {
-                        [...state.addresses,"+ Add Address"].map((el,i)=><option className="text-extraSmall md:text-base" value={el} key={i}>{el}</option>) 
+                        [...state.addresses,"+ Add Address"].map((el)=><option className="text-extraSmall md:text-base" value={el.newAddress} key={el.id}>{el.newAddress}</option>) 
                     }
                     </select>:
                     <div onClick={e=>{

@@ -8,7 +8,7 @@ import { ProfileContext } from "./GlobalContext";
 function Addresses(props){
     const [editBttnShow,setEditBttnShow]=useState(false);
     const [editFieldShow, setEditFieldShow]=useState(false);
-    const [updateAddres,setUpdateAddress]=useState(props.element);
+    const [updateAddress,setUpdateAddress]=useState(props.element);
     const {element}=props
     const {state,dispatch}=useContext(GlobalContext);
     //const {newAddress, setAddAddressBttn}=useContext(ProfileContext);
@@ -23,14 +23,14 @@ function Addresses(props){
 
 
     useEffect(()=>{
-    },[updateAddres]);
+    },[updateAddress]);
 
     document.addEventListener("mousedown",closeEditFields);
 
     return(
         <div className="w-full h-auto p-4 border border-gray-400">
             <div className="w-full flex justify-between h-auto">
-                {element}
+                {element.newAddress}
                 {!editBttnShow && <div ref={editRef} className="dots cursor-pointer" onClick={()=>setEditBttnShow(true)}>
                     <img className="w-[5vw] xxxxsm:w-5" src={hamburger_dots}/>
                 </div>}
@@ -43,8 +43,7 @@ function Addresses(props){
                     <hr/>
                     <div onClick={async e=>{
                         setEditBttnShow(false);
-                        await dispatch({type:"delete-address",payload:element});
-                        await dispatch({type:"add-address-to-DB"});
+                        await dispatch({type:"delete-address",payload:element.id});
                         navigation("/profile/addresses");
                         window.location.reload(true);
                     }}>Delete</div>    
@@ -53,13 +52,13 @@ function Addresses(props){
             </div>
             {editFieldShow? 
             <div>
-                <textarea className="w-full h-auto p-4 border border-gray-400 outline-none" defaultValue={element} onChange={e=>setUpdateAddress(e.target.value)} />
+                <textarea className="w-full h-auto p-4 border border-gray-400 outline-none" defaultValue={element.newAddress} onChange={e=>setUpdateAddress(e.target.value)} />
                 <div className="flex flex-col xxxxsm:flex-row justify-start gap-2 text-white">
                     <div onClick={
                         async e=>{
                             //const user=await addAddress();
-                            await dispatch({type:"update-address",payload:updateAddres,actualValue:element});
-                            await dispatch({type:"add-address-to-DB"});
+                            await dispatch({type:"update-address",payload:{updateAddress,id:element.id},actualValue:element.newAddress});
+                            //await dispatch({type:"add-address-to-DB"});
                             navigation("/profile/addresses");
                             window.location.reload(true);
                         }

@@ -234,28 +234,42 @@ const reducerF=(currState, action)=>{
                 ...currState,
                 showCart:true,
             }
-        case "add-address":
-            return{
-               ...currState,
-               addresses:[...currState.addresses,action.payload]
-            }
+        // case "add-address":
+        //     return{
+        //        ...currState,
+        //        addresses:[...currState.addresses,action.payload]
+        //     }
 
         case "add-address-to-DB":
+            console.log(action.payload);
             axios.patch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/add-address`,
-            {addresses:[...currState.addresses]},{withCredentials:true}).then(
-            (res)=>{}).catch((err)=>{
+            {address:action.payload},{withCredentials:true}).then(
+            (res)=>{
+                console.log(res.data.data.user.addresses)
+                return {...currState,addresses:res.data.data.user.addresses}
+            }).catch((err)=>{
 
             })
-            return currState;   
+            //return currState;   
         case "delete-address":
-            return{
-                ...currState,
-                addresses:[...currState.addresses.filter((el)=>el!==action.payload)]
-            }
+            axios.patch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/delete-address`,
+            {id:action.payload},{withCredentials:true}).then((res)=>{
+                return {...currState,addresses:res.data.data.user.addresses}
+            }).catch(err=>{})
+            
+            // return{
+            //     ...currState,
+            //     addresses:[...currState.addresses.filter((el)=>el!==action.payload)]
+            // }
         case "update-address":
-            const index4=currState.addresses.findIndex(el=>el===action.actualValue);
-            currState.addresses.splice(index4,1,action.payload);
-            return currState;
+            // const index4=currState.addresses.findIndex(el=>el===action.actualValue);
+            // currState.addresses.splice(index4,1,action.payload);
+            // return currState;
+            axios.patch(`${process.env.REACT_APP_BACKEND_URL}/api/v1/users/update-address`,
+            {id:action.payload.id,updatedAddress:action.payload.updateAddress},{withCredentials:true}).then((res)=>{
+                return {...currState,addresses:res.data.data.user.addresses}
+            }).catch(err=>{})
+
         case "add-to-wishlist":
             return{
                 ...currState,

@@ -23,7 +23,7 @@ function OrderBlocks(props){
                 }
                 </div>
                 <div className="flex flex-col gap-5 text-z xxxxsm:text-base">
-                    <p><b>Delivered to:</b> {props.item.address}</p>  
+                    <p><b>Delivered to:</b> {props.item.address.newAddress?props.item.address.newAddress:props.item.address}</p>
                     <div>
                         <p><b>Payment done on:</b></p>
                         <div className="bg-green-600 p-2 rounded-full text-white text-center">{props.item.paymentDate}</div>

@@ -18,6 +18,7 @@ import { ChangePassModal } from "./modals/ChangepassModal";
 import Footer from "./Footer";
 import SaveSpinner from "./loading-spinners/SaveSpinner";
 import LoadingSpinner from "./loading-spinners/LoadingSpinner";
+import { v4 as uuidv4 } from 'uuid';
 
 const ProfilePage=(props)=>{
     const {state,dispatch}=useContext(GlobalContext);
@@ -406,9 +407,9 @@ const ProfilePage=(props)=>{
                                 <div className="flex flex-col xxxxsm:flex-row justify-start gap-1 xxxxsm:gap-[2%] text-white">
                                     <div onClick={
                                         async e=>{
-                                            await dispatch({type:"add-address",payload:newAddress});
-                                            await dispatch({type:"add-address-to-DB"});
-                                            navigation("/profile");
+                                            //await dispatch({type:"add-address",payload:newAddress});
+                                            await dispatch({type:"add-address-to-DB", payload:{newAddress,id:uuidv4()}});
+                                            navigation("/profile/addresses");
                                             window.location.reload(true);
                                         }
                                     } className="w-full xxxxsm:w-28 px-3 py-2 bg-blue-500 bg-blue-600 text-center cursor-pointer rounded-md">SAVE</div>
@@ -417,10 +418,10 @@ const ProfilePage=(props)=>{
                             </div>
                             }   
                             {
-                            state.userProfile && state.userProfile.addresses?
+                            state.userProfile && state.addresses?
                             <div>
-                                {state.userProfile.addresses.map((el,i)=>
-                                    <Addresses key={i} element={el}/>
+                                {state.userProfile.addresses.map((el)=>
+                                    <Addresses key={el.id} element={el}/>
                                 )}
                             </div>
                             :
